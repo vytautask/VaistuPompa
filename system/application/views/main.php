@@ -16,7 +16,7 @@
 			showHeading: true,
 			headingText: "Paskutiniai pakeitimai",
 			showProfileLink: false,
-			showTimestamp: true
+			showTimestamp: false
 		});
      });
 </script>
