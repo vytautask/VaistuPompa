@@ -1,0 +1,6 @@
+Norint þmoniðkai prieiti prie repozitoriumo reikia:
+1) susiinstaliuoti Git (http://msysgit.googlecode.com/files/Git-1.7.3.1-preview20101002.exe)
+2) susiinstaliuoti Tortoise - Git (http://tortoisegit.googlecode.com/files/TortoiseGit-1.5.8.0-64bit.msi)
+3) ásitraukti repozitoriumà (git@github.com:vytautask/VaistuPompa.git)
+
+Viskas. Galima kodinti.
