@@ -1,8 +1,8 @@
 <?php
 
-class Welcome extends Controller {
+class Main extends Controller {
 
-	function Welcome()
+	function Main()
 	{
 		parent::Controller();	
 	}
