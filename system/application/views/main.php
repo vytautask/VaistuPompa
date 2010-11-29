@@ -3,8 +3,11 @@
 <head>
 <link REL="SHORTCUT ICON" HREF="http://www.vytautas.net/vaistupompa/favicon.ico">
 <title>Vaistų pompa</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js" type="text/javascript"></script><script type="text/javascript">
+     $(document).ready(function(){
+     });
+</script>
 <style type="text/css">
-
 body {
  background-color: #fff;
  margin: 40px;
