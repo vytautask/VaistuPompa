@@ -1,7 +1,8 @@
+﻿<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <html>
 <head>
-<title>Welcome to CodeIgniter</title>
-
+<link REL="SHORTCUT ICON" HREF="http://www.vytautas.net/vaistupompa/favicon.ico">
+<title>Vaistų pompa</title>
 <style type="text/css">
 
 body {
@@ -43,20 +44,19 @@ code {
 </head>
 <body>
 
-<h1>Welcome to CodeIgniter!</h1>
+<h1>Sveiki atvykę į vaistų pompos kursinio darbo puslapį!</h1>
 
-<p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
+<p>Konvencinio ir paskirstytos infuzijos paciento kontroliuojamos analgezijos virtualių modelių sukūrimas ir tyrimai</p>
 
-<p>If you would like to edit this page you'll find it located at:</p>
-<code>system/application/views/welcome_message.php</code>
+<code><b>Darbą atlieka:</b><br/> 
+Jonas Minelga<br/>
+Vytautas Kasparavičius<br/>
+Dainius Vaitiekus<br/>
+Agnė Meilutytė<br/>
+Gintarė Veličkaitė<br/>
+Audrius Česna</code>
 
-<p>The corresponding controller for this page is found at:</p>
-<code>system/application/controllers/welcome.php</code>
-
-<p>If you are exploring CodeIgniter for the very first time, you should start by reading the <a href="user_guide/">User Guide</a>.</p>
-
-
-<p><br />Page rendered in {elapsed_time} seconds</p>
+<p><br />Puslapis sugeneruotas per {elapsed_time} sekundžių</p>
 
 </body>
 </html>
