@@ -13,9 +13,16 @@ body
 #meniu
 {
 	background: #999;
+	background-image: url("gradient.svg");
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fbfbfb', endColorstr='#e9e9e9'); /* for IE */
 	background: -webkit-gradient(linear, left top, left bottom, from(#fbfbfb), to(#e9e9e9)); /* for webkit browsers */
 	background: -moz-linear-gradient(top,  #fbfbfb,  #e9e9e9);
+	
+	-moz-border-radius-bottomright: 5px;
+	border-bottom-right-radius: 5px;
+	-moz-border-radius-bottomleft: 5px;
+	border-bottom-left-radius: 5px;
+
 	height: 40px;
 	padding: 0px;
 	font-weight: bold;
@@ -26,9 +33,9 @@ body
 	margin: 0 auto;
 	display: block;
 	text-align: left;
-	-moz-box-shadow: 5px 5px 5px #ccc;
-	-webkit-box-shadow: 5px 5px 5px #ccc;
-	box-shadow: 5px 5px 5px #ccc;
+	-moz-box-shadow: 3px 3px 5px #ccc;
+	-webkit-box-shadow: 3px 3px 5px #ccc;
+	box-shadow: 3px 3px 5px #ccc;
 }
 
 #submeniu
