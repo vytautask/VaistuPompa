@@ -2,7 +2,7 @@
 1) susiinstaliuoti Git (http://msysgit.googlecode.com/files/Git-1.7.3.1-preview20101002.exe)
 2) susiinstaliuoti Tortoise - Git (http://tortoisegit.googlecode.com/files/TortoiseGit-1.5.8.0-64bit.msi)
 3) įsitraukti repozitoriumą (git@github.com:vytautask/VaistuPompa.git)
-4) prisiskirti sugeneruotą private key pagal duotą public key (galima rast kažkur repozitoriume prie projekto)
+4) prisiskirti sugeneruotą private key (generuoti su puttyGen) pagal duotą public key (galima rast kažkur repozitoriume prie projekto)
 
 Viskas. Galima kodinti.
 
