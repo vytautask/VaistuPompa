@@ -4,3 +4,5 @@ Norint þmoniðkai prieiti prie repozitoriumo reikia:
 3) ásitraukti repozitoriumà (git@github.com:vytautask/VaistuPompa.git)
 
 Viskas. Galima kodinti.
+
+VytautasK
