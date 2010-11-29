@@ -69,6 +69,11 @@ span
 	text-decoration: none;
 }
 
+#content
+{
+	text-align: left;
+}
+
 h1 {
  color: #444;
  background-color: transparent;

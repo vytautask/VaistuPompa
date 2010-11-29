@@ -23,24 +23,33 @@
 </script>
 </head>
 <body>
-
-<h1>Sveiki atvykę į vaistų pompos kursinio darbo puslapį!</h1>
-
-<p>Konvencinio ir paskirstytos infuzijos paciento kontroliuojamos analgezijos virtualių modelių sukūrimas ir tyrimai</p>
-
-<code><b>Darbą atlieka:</b><br/> 
-Jonas Minelga<br/>
-Vytautas Kasparavičius<br/>
-Dainius Vaitiekus<br/>
-Agnė Meilutytė<br/>
-Gintarė Veličkaitė<br/>
-Audrius Česna</code>
-
-<div id="twitter">
-	<p><a href="http://twitter.com/jquery">http://twitter.com/jquery</a></p>
+<div id="meniu">
+	<div id="submeniu">
+		<a href="index.php">Pagrindinis</a>
+		<span>|</span>
+		<a href="#">Simuliacija</a>
+		<span>|</span>
+		<a href="#">Parametrai</a>
+	</div>
 </div>
+<div id="content">
+	<h1>Sveiki atvykę į vaistų pompos kursinio darbo puslapį!</h1>
 
-<p><br />Puslapis sugeneruotas per {elapsed_time} sekundžių</p>
+	<p>Konvencinio ir paskirstytos infuzijos paciento kontroliuojamos analgezijos virtualių modelių sukūrimas ir tyrimai</p>
 
+	<code><b>Darbą atlieka:</b><br/> 
+	Jonas Minelga<br/>
+	Vytautas Kasparavičius<br/>
+	Dainius Vaitiekus<br/>
+	Agnė Meilutytė<br/>
+	Gintarė Veličkaitė<br/>
+	Audrius Česna</code>
+
+	<div id="twitter">
+		<p><a href="http://twitter.com/jquery">http://twitter.com/jquery</a></p>
+	</div>
+
+	<p><br />Puslapis sugeneruotas per {elapsed_time} sekundžių</p>
+</div>
 </body>
 </html>
