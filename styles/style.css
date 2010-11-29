@@ -1,0 +1,155 @@
+body
+{
+	font-family: helvetica, arial, freesans, clean, sans-serif; 
+	padding: 0px;
+	border: 0px solid red;
+	text-align: center;
+	background-color: #fff;
+	margin: 0px 40px 40px 40px;
+	font-size: 14px;
+	color: #4F5155;
+}
+
+#meniu
+{
+	background: #999;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fbfbfb', endColorstr='#e9e9e9'); /* for IE */
+	background: -webkit-gradient(linear, left top, left bottom, from(#fbfbfb), to(#e9e9e9)); /* for webkit browsers */
+	background: -moz-linear-gradient(top,  #fbfbfb,  #e9e9e9);
+	height: 40px;
+	padding: 0px;
+	font-weight: bold;
+	font-size: 15px;
+	line-height: 19px;
+	padding-left: 10px;
+	width: 750px;
+	margin: 0 auto;
+	display: block;
+	text-align: left;
+	-moz-box-shadow: 5px 5px 5px #ccc;
+	-webkit-box-shadow: 5px 5px 5px #ccc;
+	box-shadow: 5px 5px 5px #ccc;
+}
+
+#submeniu
+{
+	padding-top: 10px;
+}
+
+span
+{
+	display: table-cell;
+	color: #ccc;
+}
+
+#meniu a
+{
+	color: #4183c4;
+	text-decoration: none;
+	display: table-cell;
+	padding-right: 5px;
+	padding-left: 5px;
+}
+
+#meniu a:hover
+{
+	color: #4183c4;
+	text-decoration: underline;
+}
+
+#meniu a:visited
+{
+	color: #4183c4;
+	text-decoration: none;
+}
+
+#meniu a:active
+{
+	color: #4183c4;
+	text-decoration: none;
+}
+
+h1 {
+ color: #444;
+ background-color: transparent;
+ border-bottom: 1px solid #D0D0D0;
+ font-size: 16px;
+ font-weight: bold;
+ margin: 24px 0 2px 0;
+ padding: 5px 0 6px 0;
+}
+
+code {
+ font-family: Monaco, Verdana, Sans-serif;
+ font-size: 12px;
+ background-color: #f9f9f9;
+ border: 1px solid #D0D0D0;
+ color: #002166;
+ display: block;
+ margin: 14px 0 14px 0;
+ padding: 12px 10px 12px 10px;
+}
+
+.twitted {
+	width: 200px;
+	margin-bottom: 1.5em;
+	border: 1px solid #888;
+}
+
+.twitted h2 {
+	margin: 0;
+	padding: 0.3em 0.8em;
+	font-size: 14px;
+	color: #fff;
+	background-color: #888;
+}
+
+.twitted p.preLoader {
+	margin: 0;
+	padding: 1em 1em 1em 3em;
+	background: transparent url("loader.gif") 1em center no-repeat;
+	/* generate your own loader gif: http://www.ajaxload.info */
+}
+
+.twitted ul#twitter_update_list {
+	margin: 0;
+	padding: 0 0.8em;
+	list-style-type: none;
+}
+
+.twitted ul#twitter_update_list li {
+	margin: 0;
+	padding: 0.8em 0 1em 0;
+	border-bottom: 1px solid #ccc;
+}
+
+.twitted ul#twitter_update_list li span {
+	/* tweet content */
+	display: block;
+	font-size: 9px;
+}
+
+.twitted ul#twitter_update_list li span a {
+	/* links in tweet content */
+	color: #00f;
+}
+
+.twitted ul#twitter_update_list li a {
+	/* timestamp link */
+	color: #f00;
+}
+
+.twitted ul#twitter_update_list li.firstTweet {
+}
+
+.twitted ul#twitter_update_list li.lastTweet {
+	border-bottom: none;
+}
+
+.twitted p.profileLink {
+	display: block;
+	margin: 0;
+	padding: 0.3em 1em;
+	color: #fff;
+	background-color: #ddd;
+}
