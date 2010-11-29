@@ -11,7 +11,7 @@
 |	http://example.com/
 |
 */
-$config['base_url']	= "http://example.com/";
+$config['base_url']	= "http://vytautas.net/vaistupompa";
 
 /*
 |--------------------------------------------------------------------------
@@ -263,7 +263,7 @@ $config['cookie_path']		= "/";
 | COOKIE data is encountered
 |
 */
-$config['global_xss_filtering'] = FALSE;
+$config['global_xss_filtering'] = TRUE;
 
 /*
 |--------------------------------------------------------------------------
