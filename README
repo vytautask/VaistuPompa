@@ -1,8 +1,8 @@
-Norint þmoniðkai prieiti prie repozitoriumo reikia:
+ï»¿Norint Å¾moniÅ¡kai prieiti prie repozitoriumo reikia:
 1) susiinstaliuoti Git (http://msysgit.googlecode.com/files/Git-1.7.3.1-preview20101002.exe)
 2) susiinstaliuoti Tortoise - Git (http://tortoisegit.googlecode.com/files/TortoiseGit-1.5.8.0-64bit.msi)
-3) ásitraukti repozitoriumà (git@github.com:vytautask/VaistuPompa.git)
-4) prisiskirti sugeneruotà private key pagal duotà public key (galima rast kaþkur repozitoriume prie projekto)
+3) Ä¯sitraukti repozitoriumÄ… (git@github.com:vytautask/VaistuPompa.git)
+4) prisiskirti sugeneruotÄ… private key pagal duotÄ… public key (galima rast kaÅ¾kur repozitoriume prie projekto)
 
 Viskas. Galima kodinti.
 
