@@ -30,6 +30,7 @@
 	<code><b>Darbą atlieka:</b><br/> 
 	Jonas Minelga<br/>
 	Vytautas Kasparavičius<br/>
+	Šarūnas Gliebus</br>
 	Dainius Vaitiekus<br/>
 	Agnė Meilutytė<br/>
 	Gintarė Veličkaitė<br/>
