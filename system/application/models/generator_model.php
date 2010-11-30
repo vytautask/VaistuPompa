@@ -8,7 +8,7 @@ class Generator_model extends Model
 	}
 	
 	/**
-	* Returns generated epsilon or infinity.
+	* Returns t(i)
 	*/
 	function generate($x1 = 0.0, $x2 = 0.0, $x3 = 0.0)
 	{
@@ -18,7 +18,9 @@ class Generator_model extends Model
 		$minVal = min($x1, $x2, $x3);
 		if ($painConst >= $minVal)
 		{
-			return floatval(((0, 1000)/1000));
+			$e = rand(0, 1000)/1000;
+			
+			return floatval((1/$lambda)*log($e));
 		}
 		else 
 		{
