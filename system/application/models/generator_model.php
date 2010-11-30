@@ -18,7 +18,7 @@ class Generator_model extends Model
 		$minVal = min($x1, $x2, $x3);
 		if ($painConst >= $minVal)
 		{
-			$e = rand(0, 1000)/1000;
+			$e = rand(1, 1000)/1000;
 			
 			return floatval((1/$lambda)*log($e));
 		}
