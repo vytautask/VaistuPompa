@@ -37,7 +37,7 @@
 	Audrius Česna</code>
 
 	<div id="twitter">
-		<p><a href="http://twitter.com/jquery">http://twitter.com/jquery</a></p>
+		<p><a href="http://twitter.com/jquery"></a></p>
 	</div>
 </div>
 <?php
