@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jnlp codebase="file:/C:/Users/Vytautas/Desktop/mokslai/pranevicius/VaistuPompa/applet/VaistuPompa/dist/" href="launch.jnlp" spec="1.0+">
+    <information>
+        <title>VaistuPompa</title>
+        <vendor>Vytautas</vendor>
+        <homepage href=""/>
+        <description>VaistuPompa</description>
+        <description kind="short">VaistuPompa</description>
+
+    </information>
+<update check="background"/>
+<security>
+<all-permissions/>
+</security>
+    <resources>
+<j2se version="1.5+"/>
+<jar href="VaistuPompa.jar" main="true"/>
+
+
+    </resources>
+    <applet-desc height="300" main-class="vaistupompa.MainForm" name="VaistuPompa" width="300">
+
+    </applet-desc>
+</jnlp>
