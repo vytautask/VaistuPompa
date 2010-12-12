@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><umlet_diagram><help_text>// Uncomment the following line to change the fontsize:
+// fontsize=14
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// Welcome to UMLet!
+//
+// Double-click on UML elements to add them to the diagram, or to copy them
+// Edit elements by modifying the text in this panel
+// Hold Ctrl to select multiple elements
+// Use Ctrl+mouse to select via lasso
+//
+// Use ± or Ctrl+mouse wheel to zoom
+// Drag a whole relation at its central square icon
+//
+// Press Ctrl+C to copy the whole diagram to the system clipboard (then just paste it to, eg, Word)
+// Edit the files in the "palettes" directory to create your own element palettes
+//
+// Select "Custom Elements &gt; New..." to create new element types
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+
+// This text will be stored with each diagram;  use it for notes.</help_text><zoom_level>7</zoom_level><element><type>com.umlet.element.base.Relation</type><coordinates><x>469</x><y>273</y><w>244</w><h>62</h></coordinates><panel_attributes>lt=-&gt;
+</panel_attributes><additional_attributes>21;21;196;21;196;49;231;49</additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>364</x><y>252</y><w>83</w><h>167</h></coordinates><panel_attributes>lt=-&gt;
+</panel_attributes><additional_attributes>21;154;21;21;70;21</additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>392</x><y>266</y><w>55</w><h>48</h></coordinates><panel_attributes>lt=-&gt;
+</panel_attributes><additional_attributes>21;35;21;21;42;21</additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>392</x><y>280</y><w>55</w><h>62</h></coordinates><panel_attributes>lt=-&gt;
+</panel_attributes><additional_attributes>21;49;21;21;42;21</additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>343</x><y>294</y><w>104</w><h>195</h></coordinates><panel_attributes>lt=-&gt;
+</panel_attributes><additional_attributes>21;182;21;21;91;21</additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>392</x><y>308</y><w>55</w><h>69</h></coordinates><panel_attributes>lt=-&gt;</panel_attributes><additional_attributes>21;56;21;21;42;21</additional_attributes></element><element><type>CustomElementImpl</type><coordinates><x>434</x><y>259</y><w>57</w><h>85</h></coordinates><panel_attributes>// Modify the text below and
+// observe the element preview.
++X1
+1
+2
+3
+4
+5
+--
+1
+</panel_attributes><additional_attributes/><custom_code>//Modify the code below to
+//define the element's behavior.
+//
+//Example:  Change the line
+//  y = y + textHeight();
+//to
+//  y = y + 2 * textHeight();
+//and observe the element preview.
+
+int y=textHeight() + 2;
+
+drawRectangle(0,0,width,height);
+printRight(textlines.get(0), height - textHeight() + 5);
+
+//drawCircle( width-6, height / 2, 5);
+
+int i = 0;
+for(String textline : textlines) {
+	i++;
+	if(i &lt; 2) continue;
+	if(textline.contains("--")) break;
+	
+	drawCircle( 8, y, 5);
+	printLeft("   " + textline, y + 5);
+	y = y + textHeight() + 4;
+}
+
+y = (height - (textlines.size() - i) * (textHeight() + 4)) / 2;
+int k = 0;
+for(String textline : textlines) {
+	k++;
+	if(k &lt;= i) continue;
+
+	drawCircle( width - 6, y, 5);
+	printRight(textline + "    ", y + 2);
+	y = y + textHeight() + 4;
+}</custom_code></element><element><type>CustomElementImpl</type><coordinates><x>434</x><y>378</y><w>57</w><h>50</h></coordinates><panel_attributes>// Modify the text below and
+// observe the element preview.
+
++X2
+1
+2
+--
+1
+</panel_attributes><additional_attributes/><custom_code>//Modify the code below to
+//define the element's behavior.
+//
+//Example:  Change the line
+//  y = y + textHeight();
+//to
+//  y = y + 2 * textHeight();
+//and observe the element preview.
+
+int y=textHeight() + 2;
+
+drawRectangle(0,0,width,height);
+printRight(textlines.get(0), height - textHeight() + 5);
+
+//drawCircle( width-6, height / 2, 5);
+
+int i = 0;
+for(String textline : textlines) {
+	i++;
+	if(i &lt; 2) continue;
+	if(textline.contains("--")) break;
+	
+	drawCircle( 8, y, 5);
+	printLeft("   " + textline, y + 5);
+	y = y + textHeight() + 4;
+}
+
+y = (height - (textlines.size() - i) * (textHeight() + 4)) / 2;
+int k = 0;
+for(String textline : textlines) {
+	k++;
+	if(k &lt;= i) continue;
+
+	drawCircle( width - 6, y, 5);
+	printRight(textline + "    ", y + 2);
+	y = y + textHeight() + 4;
+}</custom_code></element><element><type>CustomElementImpl</type><coordinates><x>434</x><y>448</y><w>57</w><h>57</h></coordinates><panel_attributes>// Modify the text below and
+// observe the element preview.
+
++X3
+1
+2
+--
+1
+</panel_attributes><additional_attributes/><custom_code>//Modify the code below to
+//define the element's behavior.
+//
+//Example:  Change the line
+//  y = y + textHeight();
+//to
+//  y = y + 2 * textHeight();
+//and observe the element preview.
+
+int y=textHeight() + 2;
+
+drawRectangle(0,0,width,height);
+printRight(textlines.get(0), height - textHeight() + 5);
+
+//drawCircle( width-6, height / 2, 5);
+
+int i = 0;
+for(String textline : textlines) {
+	i++;
+	if(i &lt; 2) continue;
+	if(textline.contains("--")) break;
+	
+	drawCircle( 8, y, 5);
+	printLeft("   " + textline, y + 5);
+	y = y + textHeight() + 4;
+}
+
+y = (height - (textlines.size() - i) * (textHeight() + 4)) / 2;
+int k = 0;
+for(String textline : textlines) {
+	k++;
+	if(k &lt;= i) continue;
+
+	drawCircle( width - 6, y, 5);
+	printRight(textline + "    ", y + 2);
+	y = y + textHeight() + 4;
+}</custom_code></element><element><type>CustomElementImpl</type><coordinates><x>700</x><y>308</y><w>57</w><h>43</h></coordinates><panel_attributes>// Modify the text below and
+// observe the element preview.
+
+∫ X1
+1
+2
+--
+1</panel_attributes><additional_attributes/><custom_code>//Modify the code below to
+//define the element's behavior.
+//
+//Example:  Change the line
+//  y = y + textHeight();
+//to
+//  y = y + 2 * textHeight();
+//and observe the element preview.
+
+int y=textHeight() + 2;
+
+drawRectangle(0,0,width,height);
+printRight(textlines.get(0), height - textHeight() + 5);
+
+//drawCircle( width-6, height / 2, 5);
+
+int i = 0;
+for(String textline : textlines) {
+	i++;
+	if(i &lt; 2) continue;
+	if(textline.contains("--")) break;
+	
+	drawCircle( 8, y, 5);
+	printLeft("   " + textline, y + 5);
+	y = y + textHeight() + 4;
+}
+
+y = (height - (textlines.size() - i) * (textHeight() + 4)) / 2;
+int k = 0;
+for(String textline : textlines) {
+	k++;
+	if(k &lt;= i) continue;
+
+	drawCircle( width - 6, y, 5);
+	printRight(textline + "    ", y + 2);
+	y = y + textHeight() + 4;
+}</custom_code></element><element><type>CustomElementImpl</type><coordinates><x>700</x><y>378</y><w>57</w><h>43</h></coordinates><panel_attributes>// Modify the text below and
+// observe the element preview.
+
+∫ X2
+1
+--
+1</panel_attributes><additional_attributes/><custom_code>//Modify the code below to
+//define the element's behavior.
+//
+//Example:  Change the line
+//  y = y + textHeight();
+//to
+//  y = y + 2 * textHeight();
+//and observe the element preview.
+
+int y=textHeight() + 2;
+
+drawRectangle(0,0,width,height);
+printRight(textlines.get(0), height - textHeight() + 5);
+
+//drawCircle( width-6, height / 2, 5);
+
+int i = 0;
+for(String textline : textlines) {
+	i++;
+	if(i &lt; 2) continue;
+	if(textline.contains("--")) break;
+	
+	drawCircle( 8, y, 5);
+	printLeft("   " + textline, y + 5);
+	y = y + textHeight() + 4;
+}
+
+y = (height - (textlines.size() - i) * (textHeight() + 4)) / 2;
+int k = 0;
+for(String textline : textlines) {
+	k++;
+	if(k &lt;= i) continue;
+
+	drawCircle( width - 6, y, 5);
+	printRight(textline + "    ", y + 2);
+	y = y + textHeight() + 4;
+}</custom_code></element><element><type>CustomElementImpl</type><coordinates><x>700</x><y>455</y><w>57</w><h>43</h></coordinates><panel_attributes>// Modify the text below and
+// observe the element preview.
+
+∫ X3
+1
+--
+1</panel_attributes><additional_attributes/><custom_code>//Modify the code below to
+//define the element's behavior.
+//
+//Example:  Change the line
+//  y = y + textHeight();
+//to
+//  y = y + 2 * textHeight();
+//and observe the element preview.
+
+int y=textHeight() + 2;
+
+drawRectangle(0,0,width,height);
+printRight(textlines.get(0), height - textHeight() + 5);
+
+//drawCircle( width-6, height / 2, 5);
+
+int i = 0;
+for(String textline : textlines) {
+	i++;
+	if(i &lt; 2) continue;
+	if(textline.contains("--")) break;
+	
+	drawCircle( 8, y, 5);
+	printLeft("   " + textline, y + 5);
+	y = y + textHeight() + 4;
+}
+
+y = (height - (textlines.size() - i) * (textHeight() + 4)) / 2;
+int k = 0;
+for(String textline : textlines) {
+	k++;
+	if(k &lt;= i) continue;
+
+	drawCircle( width - 6, y, 5);
+	printRight(textline + "    ", y + 2);
+	y = y + textHeight() + 4;
+}</custom_code></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>273</x><y>315</y><w>440</w><h>48</h></coordinates><panel_attributes>lt=-&gt;
+</panel_attributes><additional_attributes>21;35;392;35;392;21;427;21</additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>364</x><y>371</y><w>433</w><h>77</h></coordinates><panel_attributes>lt=-&gt;
+x2</panel_attributes><additional_attributes>392;21;420;21;420;63;21;63;21;35;70;35</additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>343</x><y>448</y><w>454</w><h>98</h></coordinates><panel_attributes>lt=-&gt;
+x3</panel_attributes><additional_attributes>413;21;441;21;441;84;21;84;21;28;91;28</additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>392</x><y>371</y><w>55</w><h>104</h></coordinates><panel_attributes>lt=-&gt;
+</panel_attributes><additional_attributes>21;21;21;91;42;91</additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>392</x><y>301</y><w>405</w><h>104</h></coordinates><panel_attributes>lt=-&gt;
+x1</panel_attributes><additional_attributes>364;21;392;21;392;63;21;63;21;91;42;91</additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>469</x><y>371</y><w>244</w><h>34</h></coordinates><panel_attributes>lt=-&gt;
+</panel_attributes><additional_attributes>21;21;231;21</additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>469</x><y>448</y><w>244</w><h>34</h></coordinates><panel_attributes>lt=-&gt;
+</panel_attributes><additional_attributes>21;21;231;21</additional_attributes></element><element><type>com.umlet.element.base.UseCase</type><coordinates><x>245</x><y>329</y><w>49</w><h>49</h></coordinates><panel_attributes>Pompa</panel_attributes><additional_attributes/></element><element><type>CustomElementImpl</type><coordinates><x>70</x><y>322</y><w>127</w><h>71</h></coordinates><panel_attributes>// Modify the text below and
+// observe the element preview.
+
+Skausmo generatorius 
+1
+2
+3
+--
+1
+</panel_attributes><additional_attributes/><custom_code>//Modify the code below to
+//define the element's behavior.
+//
+//Example:  Change the line
+//  y = y + textHeight();
+//to
+//  y = y + 2 * textHeight();
+//and observe the element preview.
+
+int y=textHeight() + 2;
+
+drawRectangle(0,0,width,height);
+printRight(textlines.get(0), height - textHeight() + 5);
+
+//drawCircle( width-6, height / 2, 5);
+
+int i = 0;
+for(String textline : textlines) {
+	i++;
+	if(i &lt; 2) continue;
+	if(textline.contains("--")) break;
+	
+	drawCircle( 8, y, 5);
+	printLeft("   " + textline, y + 5);
+	y = y + textHeight() + 4;
+}
+
+y = (height - (textlines.size() - i) * (textHeight() + 4)) / 2;
+int k = 0;
+for(String textline : textlines) {
+	k++;
+	if(k &lt;= i) continue;
+
+	drawCircle( width - 6, y, 5);
+	printRight(textline + "    ", y + 2);
+	y = y + textHeight() + 4;
+}</custom_code></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>28</x><y>203</y><w>510</w><h>146</h></coordinates><panel_attributes>lt=-&gt;
+</panel_attributes><additional_attributes>497;91;497;21;21;21;21;133;42;133</additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>0</x><y>175</y><w>573</w><h>230</h></coordinates><panel_attributes>lt=-&gt;
+</panel_attributes><additional_attributes>560;217;560;21;21;21;21;175;70;175</additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>28</x><y>343</y><w>545</w><h>230</h></coordinates><panel_attributes>lt=-&gt;
+</panel_attributes><additional_attributes>532;126;532;217;21;217;21;21;42;21</additional_attributes></element><element><type>com.umlet.element.custom.InitialState</type><coordinates><x>518</x><y>287</y><w>14</w><h>14</h></coordinates><panel_attributes>i</panel_attributes><additional_attributes/></element><element><type>com.umlet.element.custom.InitialState</type><coordinates><x>553</x><y>385</y><w>14</w><h>14</h></coordinates><panel_attributes>i</panel_attributes><additional_attributes/></element><element><type>com.umlet.element.custom.InitialState</type><coordinates><x>553</x><y>462</y><w>14</w><h>14</h></coordinates><panel_attributes>i</panel_attributes><additional_attributes/></element><element><type>com.umlet.element.custom.InitialState</type><coordinates><x>378</x><y>399</y><w>14</w><h>14</h></coordinates><panel_attributes>i</panel_attributes><additional_attributes/></element><element><type>com.umlet.element.custom.InitialState</type><coordinates><x>357</x><y>469</y><w>14</w><h>14</h></coordinates><panel_attributes>i</panel_attributes><additional_attributes/></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>175</x><y>329</y><w>83</w><h>34</h></coordinates><panel_attributes>lt=-&gt;
+</panel_attributes><additional_attributes>21;21;70;21</additional_attributes></element><element><type>com.umlet.element.base.UseCase</type><coordinates><x>896</x><y>371</y><w>49</w><h>49</h></coordinates><panel_attributes>OUT</panel_attributes><additional_attributes/></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>763</x><y>371</y><w>146</w><h>34</h></coordinates><panel_attributes>lt=-&gt;
+</panel_attributes><additional_attributes>21;21;133;21</additional_attributes></element><element><type>com.umlet.element.custom.InitialState</type><coordinates><x>777</x><y>385</y><w>14</w><h>14</h></coordinates><panel_attributes>i</panel_attributes><additional_attributes/></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>763</x><y>301</y><w>146</w><h>104</h></coordinates><panel_attributes>lt=-&gt;
+</panel_attributes><additional_attributes>21;21;84;21;84;91;133;91</additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>763</x><y>371</y><w>146</w><h>111</h></coordinates><panel_attributes>lt=-&gt;
+</panel_attributes><additional_attributes>21;98;84;98;84;21;133;21</additional_attributes></element><element><type>com.umlet.element.custom.InitialState</type><coordinates><x>777</x><y>315</y><w>14</w><h>14</h></coordinates><panel_attributes>i</panel_attributes><additional_attributes/></element><element><type>com.umlet.element.custom.InitialState</type><coordinates><x>777</x><y>462</y><w>14</w><h>14</h></coordinates><panel_attributes>i</panel_attributes><additional_attributes/></element></umlet_diagram>
