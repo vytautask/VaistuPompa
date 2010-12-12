@@ -13,7 +13,7 @@ body
 #meniu
 {
 	background: #999;
-	background-image: url("gradient.svg");
+	background-image: url("gradient.png");
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fbfbfb', endColorstr='#e9e9e9'); /* for IE */
 	background: -webkit-gradient(linear, left top, left bottom, from(#fbfbfb), to(#e9e9e9)); /* for webkit browsers */
 	background: -moz-linear-gradient(top,  #fbfbfb,  #e9e9e9);
