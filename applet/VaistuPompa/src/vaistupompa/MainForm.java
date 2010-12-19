@@ -7,17 +7,32 @@
 package vaistupompa;
 
 import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 import javax.swing.SpinnerNumberModel;
+import org.jfree.chart.ChartPanel;
+
+import org.jfree.chart.JFreeChart;
 
 /**
  *
  * @author Vytautas
  */
 public class MainForm extends javax.swing.JApplet {
+    // <editor-fold defaultstate="collapsed" desc="Private Members">
+        private SimulationChartClass simuChart;
+    //</editor-fold>
+
 
     @Override
     public void init() {
         initComponents();
+
+        // <editor-fold desc="Set default values">
         this.getContentPane().setBackground(Color.white);
 
         SpinnerNumberModel model = new SpinnerNumberModel();
@@ -41,6 +56,12 @@ public class MainForm extends javax.swing.JApplet {
         this.jSpinnerT.setModel(model);
         this.jSpinnerDeltaT.setModel(model2);
         this.jSpinnerLambda.setModel(model3);
+//</editor-fold>
+
+        simuChart = new SimulationChartClass();
+        ChartPanel panel = new ChartPanel(simuChart.CreateSampleChart());
+        jTabbedPane1.addTab("Grafikas", panel);
+        jTabbedPane1.addTab("Ten kur paspaust ir pažiūrėt galima", new JPanel());
     }
 
     @SuppressWarnings("unchecked")
@@ -56,6 +77,7 @@ public class MainForm extends javax.swing.JApplet {
         jSpinnerDeltaT = new javax.swing.JSpinner();
         jSpinnerT = new javax.swing.JSpinner();
         jSpinnerLambda = new javax.swing.JSpinner();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
 
         jButton1.setText("jButton1");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -66,16 +88,16 @@ public class MainForm extends javax.swing.JApplet {
 
         jPanelParameters.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 12)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 12));
         jLabel1.setText("Vidutinis vaisto pareikalavimų skaičius per valandą:");
 
-        jLabel2.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 12));
         jLabel2.setText("Vaistų išdavimo laiko limitas (sekundėmis):");
 
-        jLabel3.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 12));
         jLabel3.setText("Delta t (sekundėmis):");
 
-        jLabel4.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 12)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 12));
         jLabel4.setText("<html>[PKA] - kuriam laikui pompa blokuojama po vaistų išskyrimo<br>[iPKA] - per kiek laiko vaistas įšvirkščiamas</html>");
 
         javax.swing.GroupLayout jPanelParametersLayout = new javax.swing.GroupLayout(jPanelParameters);
@@ -86,19 +108,20 @@ public class MainForm extends javax.swing.JApplet {
                 .addContainerGap()
                 .addGroup(jPanelParametersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelParametersLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelParametersLayout.createSequentialGroup()
                         .addGroup(jPanelParametersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanelParametersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jSpinnerLambda, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
-                            .addComponent(jSpinnerT, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
-                            .addComponent(jSpinnerDeltaT, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE))))
-                .addContainerGap())
+                        .addGroup(jPanelParametersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jSpinnerDeltaT)
+                            .addComponent(jSpinnerT)
+                            .addComponent(jSpinnerLambda, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)))
+                    .addGroup(jPanelParametersLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(359, Short.MAX_VALUE))
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 767, Short.MAX_VALUE)
         );
         jPanelParametersLayout.setVerticalGroup(
             jPanelParametersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,7 +140,9 @@ public class MainForm extends javax.swing.JApplet {
                     .addComponent(jSpinnerDeltaT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 632, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -125,23 +150,20 @@ public class MainForm extends javax.swing.JApplet {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(188, 188, 188)
-                        .addComponent(jButton1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanelParameters, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(102, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(328, 328, 328))
+                    .addComponent(jPanelParameters, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanelParameters, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(141, 141, 141)
-                .addComponent(jButton1)
-                .addContainerGap())
+                .addComponent(jPanelParameters, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -160,6 +182,7 @@ public class MainForm extends javax.swing.JApplet {
     private javax.swing.JSpinner jSpinnerDeltaT;
     private javax.swing.JSpinner jSpinnerLambda;
     private javax.swing.JSpinner jSpinnerT;
+    private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 
 }
