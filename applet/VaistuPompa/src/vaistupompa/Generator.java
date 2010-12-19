@@ -10,11 +10,15 @@ import java.util.Random;
 public class Generator implements IGenerator {
 
     // <editor-fold defaultstate="collapsed" desc="Private members">
+
     private int _lambda; //vaistų išdavimo laiko limitas
     private int _t; //pareikalavimų skaičius per valandą
     private double _painConst;
     private ArrayList<IGeneratorValue> _generatedValues = new ArrayList<IGeneratorValue>();
+
     // </editor-fold>
+
+    // <editor-fold defaultstate="collapsed" desc="Ctors">
 
     public Generator(int lambda, int t)
     {
@@ -26,7 +30,10 @@ public class Generator implements IGenerator {
     {
     }
 
+    // </editor-fold>
+
     // <editor-fold defaultstate="collapsed" desc="Generate methods">
+    
     public double generate(double x1) {
         return this.generate(x1, Double.MAX_VALUE, Double.MAX_VALUE);
     }
@@ -59,9 +66,11 @@ public class Generator implements IGenerator {
 
         return generated;
     }
+    
     // </editor-fold>
 
     // <editor-fold defaultstate="collapsed" desc="Set methods">
+
     public void setLambda(int lambda) {
         this._lambda = lambda;
     }
@@ -69,9 +78,11 @@ public class Generator implements IGenerator {
     public void setT(int t) {
         this._t = t;
     }
+    
     // </editor-fold>
 
     // <editor-fold defaultstate="collapsed" desc="Get methods">
+    
     public int getLambda() {
         return this._lambda;
     }
@@ -91,5 +102,6 @@ public class Generator implements IGenerator {
     public double getPainConst() {
         return this._painConst;
     }
+    
     // </editor-fold>
 }
