@@ -7,16 +7,7 @@
 package vaistupompa;
 
 import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JPanel;
 import javax.swing.SpinnerNumberModel;
-import org.jfree.chart.ChartPanel;
-
-import org.jfree.chart.JFreeChart;
 
 /**
  *
@@ -58,9 +49,7 @@ public class MainForm extends javax.swing.JApplet {
         this.jSpinnerLambda.setModel(model3);
 //</editor-fold>
 
-        simuChart = new SimulationChartClass();
-        ChartPanel panel = new ChartPanel(simuChart.CreateSampleChart());
-        jTabbedPane1.insertTab("Grafikas", null, panel, null, 0);
+//        jTabbedPane1.insertTab("Grafikas", null, panel, null, 0);
         
         PartSelector ps = new PartSelector();
         jSplitPane1.setLeftComponent(ps);
