@@ -60,8 +60,11 @@ public class MainForm extends javax.swing.JApplet {
 
         simuChart = new SimulationChartClass();
         ChartPanel panel = new ChartPanel(simuChart.CreateSampleChart());
-        jTabbedPane1.addTab("Grafikas", panel);
-        jTabbedPane1.addTab("Ten kur paspaust ir pažiūrėt galima", new JPanel());
+        jTabbedPane1.insertTab("Grafikas", null, panel, null, 0);
+        
+        PartSelector ps = new PartSelector();
+        jSplitPane1.setLeftComponent(ps);
+        jSplitPane1.setDividerLocation(345);
     }
 
     @SuppressWarnings("unchecked")
@@ -78,6 +81,10 @@ public class MainForm extends javax.swing.JApplet {
         jSpinnerT = new javax.swing.JSpinner();
         jSpinnerLambda = new javax.swing.JSpinner();
         jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel2 = new javax.swing.JPanel();
+        jSplitPane1 = new javax.swing.JSplitPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         jButton1.setText("jButton1");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -99,6 +106,36 @@ public class MainForm extends javax.swing.JApplet {
 
         jLabel4.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 12));
         jLabel4.setText("<html>[PKA] - kuriam laikui pompa blokuojama po vaistų išskyrimo<br>[iPKA] - per kiek laiko vaistas įšvirkščiamas</html>");
+
+        jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jSplitPane1.setRightComponent(jScrollPane1);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 762, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 605, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Ten kur paspaust ir pažiūrėt galima", jPanel2);
 
         javax.swing.GroupLayout jPanelParametersLayout = new javax.swing.GroupLayout(jPanelParameters);
         jPanelParameters.setLayout(jPanelParametersLayout);
@@ -178,11 +215,15 @@ public class MainForm extends javax.swing.JApplet {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanelParameters;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner jSpinnerDeltaT;
     private javax.swing.JSpinner jSpinnerLambda;
     private javax.swing.JSpinner jSpinnerT;
+    private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 
 }
