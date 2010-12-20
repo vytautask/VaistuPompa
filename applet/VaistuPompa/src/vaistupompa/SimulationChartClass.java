@@ -12,6 +12,9 @@ import org.math.plot.Plot3DPanel;
  */
 public class SimulationChartClass {
 
+ public Plot3DPanel CreateAdvacedChart(DataContainer[] data){
+    return null;
+ }
     //API suggestions are welcome
     public Plot3DPanel CreateSampleChart() {
         // Data definition

@@ -17,7 +17,7 @@ public class MainForm extends javax.swing.JApplet {
     
     // <editor-fold defaultstate="collapsed" desc="Private Members">
 
-    //private SimulationChartClass simuChart;
+    private SimulationChartClass simuChart = new SimulationChartClass();
 
     //</editor-fold>
 
@@ -47,6 +47,11 @@ public class MainForm extends javax.swing.JApplet {
 
         //</editor-fold>
         
+        DataContainer[] data = null;
+
+        jTabbedPane1.insertTab("Grafikas", null, 
+                simuChart.CreateAdvacedChart(data), "Parodo visokius grafikus", 0);
+
         PartSelector ps = new PartSelector();
         jSplitPane1.setLeftComponent(ps);
         jSplitPane1.setDividerLocation(345);
