@@ -95,7 +95,7 @@ public class Sumator implements ISumator {
     public double getSumK3()
     {
         double sum = 0;
-        sum = X1 * B3[0] + X3 * B3[2];
+        sum = X1 * B3[0] + X3 * B3[1];
 
         return sum;
     }

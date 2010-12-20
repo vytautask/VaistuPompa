@@ -20,6 +20,8 @@ public class Simulator {
     private double _x2_1; //tas pats iPKA pompoj
     private double _x3_1; //tas pats iPKA pompoj
 
+    private ArrayList<DataContainer> _valuesList_PKA;
+    private ArrayList<DataContainer> _valuesList_iPKA;
     // </editor-fold>
 
     // <editor-fold defaultstate="collapsed" desc="Ctor">
@@ -41,7 +43,7 @@ public class Simulator {
 
         // <editor-fold defaultstate="collapsed" desc="PKA pompa">
 
-        ArrayList<DataContainer> valuesList_PKA = new ArrayList<DataContainer>();
+        setValuesList_PKA(new ArrayList<DataContainer>());
 
         for (int i = 0; i <= _t; i++) {
             DataContainer cont = new DataContainer();
@@ -116,13 +118,15 @@ public class Simulator {
             cont.setSum1_out(_x1);
             cont.setSum2_out(_x2);
             cont.setSum3_out(_x3);
+
+            getValuesList_PKA().add(cont);
         }
 
         // </editor-fold>
 
         // <editor-fold defaultstate="collapsed" desc="iPKA pompa">
 
-        ArrayList<DataContainer> valuesList_iPKA = new ArrayList<DataContainer>();
+        setValuesList_iPKA(new ArrayList<DataContainer>());
 
         int timeToDistribute = 0;
         for (int i = 0; i <= _t; i++) {
@@ -205,8 +209,38 @@ public class Simulator {
             cont.setSum1_out(_x1_1);
             cont.setSum2_out(_x2_1);
             cont.setSum3_out(_x3_1);
+
+            getValuesList_iPKA().add(cont);
         }
 
         // </editor-fold>
+    }
+
+    /**
+     * @return the _valuesList_PKA
+     */
+    public ArrayList<DataContainer> getValuesList_PKA() {
+        return _valuesList_PKA;
+    }
+
+    /**
+     * @param valuesList_PKA the _valuesList_PKA to set
+     */
+    public void setValuesList_PKA(ArrayList<DataContainer> valuesList_PKA) {
+        this._valuesList_PKA = valuesList_PKA;
+    }
+
+    /**
+     * @return the _valuesList_iPKA
+     */
+    public ArrayList<DataContainer> getValuesList_iPKA() {
+        return _valuesList_iPKA;
+    }
+
+    /**
+     * @param valuesList_iPKA the _valuesList_iPKA to set
+     */
+    public void setValuesList_iPKA(ArrayList<DataContainer> valuesList_iPKA) {
+        this._valuesList_iPKA = valuesList_iPKA;
     }
 }
