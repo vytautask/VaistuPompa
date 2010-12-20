@@ -68,9 +68,9 @@ public class Simulator {
 
             sumator1.setXValues(pokyt1, pokyt2, pokyt3);
 
-            sumator1.getSumK1(); //vaisto kiekis kraujo plazmoje einamuoju laiko momentu (i) 1 kompartamente
-            sumator1.getSumK2(); //vaisto kiekis kraujo plazmoje einamuoju laiko momentu (i) 2 kompartamente
-            sumator1.getSumK3(); //vaisto kiekis kraujo plazmoje einamuoju laiko momentu (i) 3 kompartamente
+            _x1 = sumator1.getSumK1(); //vaisto kiekis kraujo plazmoje einamuoju laiko momentu (i) 1 kompartamente
+            _x2 = sumator1.getSumK2(); //vaisto kiekis kraujo plazmoje einamuoju laiko momentu (i) 2 kompartamente
+            _x3 = sumator1.getSumK3(); //vaisto kiekis kraujo plazmoje einamuoju laiko momentu (i) 3 kompartamente
         }
 
         // </editor-fold>
@@ -79,7 +79,7 @@ public class Simulator {
 
         int timeToDistribute = 0;
         for (int i = 0; i <= _t; i++) {
-            if (timeToNextDose == i) {
+            if (timeToNextDose2 == i) {
                 if (ipka_pump.allowed(i)) {
                     timeToDistribute = _deltaT;
                     timeToNextDose2 = i + generator.generate(_x1_1, _x2_1, _x3_1);
@@ -112,9 +112,9 @@ public class Simulator {
 
             sumator1.setXValues(pokyt1, pokyt2, pokyt3);
 
-            sumator1.getSumK1(); //vaisto kiekis kraujo plazmoje einamuoju laiko momentu (i) 1 kompartamente
-            sumator1.getSumK2(); //vaisto kiekis kraujo plazmoje einamuoju laiko momentu (i) 2 kompartamente
-            sumator1.getSumK3(); //vaisto kiekis kraujo plazmoje einamuoju laiko momentu (i) 3 kompartamente
+            _x1_1 = sumator1.getSumK1(); //vaisto kiekis kraujo plazmoje einamuoju laiko momentu (i) 1 kompartamente
+            _x2_1 = sumator1.getSumK2(); //vaisto kiekis kraujo plazmoje einamuoju laiko momentu (i) 2 kompartamente
+            _x3_1 = sumator1.getSumK3(); //vaisto kiekis kraujo plazmoje einamuoju laiko momentu (i) 3 kompartamente
         }
 
         // </editor-fold>
