@@ -79,7 +79,7 @@
                           <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="359" max="32767" attributes="0"/>
+                  <EmptySpace pref="393" max="32767" attributes="0"/>
               </Group>
               <Component id="jTabbedPane1" alignment="0" pref="767" max="32767" attributes="0"/>
           </Group>
@@ -171,7 +171,7 @@
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jSplitPane1" alignment="0" pref="605" max="32767" attributes="0"/>
+                      <Component id="jSplitPane1" alignment="0" pref="604" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>

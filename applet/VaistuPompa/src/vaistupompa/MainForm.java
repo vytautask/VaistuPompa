@@ -15,7 +15,7 @@ import javax.swing.SpinnerNumberModel;
  */
 public class MainForm extends javax.swing.JApplet {
     // <editor-fold defaultstate="collapsed" desc="Private Members">
-        private SimulationChartClass simuChart;
+        private SimulationChartClass simuChart = new SimulationChartClass();
     //</editor-fold>
 
 
@@ -49,7 +49,7 @@ public class MainForm extends javax.swing.JApplet {
         this.jSpinnerLambda.setModel(model3);
 //</editor-fold>
 
-//        jTabbedPane1.insertTab("Grafikas", null, panel, null, 0);
+        jTabbedPane1.insertTab("Grafikas", null, simuChart.CreateSampleChart(), null, 0);
         
         PartSelector ps = new PartSelector();
         jSplitPane1.setLeftComponent(ps);

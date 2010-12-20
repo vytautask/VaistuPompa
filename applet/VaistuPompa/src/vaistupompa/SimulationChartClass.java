@@ -4,15 +4,7 @@
  */
 package vaistupompa;
 
-import org.jfree.chart.ChartUtilities;
-import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartPanel;
-import org.jfree.chart.plot.PlotOrientation;
-import org.jfree.data.general.DefaultPieDataset;
-import org.jfree.data.xy.XYDataset;
-import org.jfree.data.xy.XYSeries;
-import org.jfree.data.xy.XYSeriesCollection;
-import org.jfree.chart.JFreeChart;
+import org.math.plot.Plot3DPanel;
 
 /**
  *
@@ -21,41 +13,27 @@ import org.jfree.chart.JFreeChart;
 public class SimulationChartClass {
 
     //API suggestions are welcome
+    public Plot3DPanel CreateSampleChart() {
+        // Data definition
+        int n = 10;
+        double[][] datas1 = new double[n][n];
+        double[][] datas2 = new double[n][n];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                datas1[i][j] = Math.random();
+                datas2[i][j] = Math.random();
+            }
+        }
 
-    public JFreeChart CreateSampleChart() {
+        // PlotPanel construction
+        Plot3DPanel plotpanel = new Plot3DPanel();
+        plotpanel.addLegend("SOUTH");
 
-        XYSeries series = new XYSeries("A");
-        series.add(1, 1);
-        series.add(2, 2);
-        series.add(3, 1);
-        series.add(4, 9);
-        series.add(5, 10);
-        series.add(6, 60);
+        // Data plots addition
+        plotpanel.addGridPlot("datas1", datas1);
+        //plotpanel.addBarPlot("datas2", datas2);
 
-        XYSeries series2 = new XYSeries("B");
-        series2.add(1, 1 / 2);
-        series2.add(2, 2 / 2);
-        series2.add(3, 1 / 2);
-        series2.add(4, 9 / 2);
-        series2.add(5, 10 / 2);
-        series2.add(6, 60 / 2);
-
-// Add the series to your data set
-        XYSeriesCollection dataset = new XYSeriesCollection();
-        dataset.addSeries(series);
-        dataset.addSeries(series2);
-// Generate the graph
-        JFreeChart chart = ChartFactory.createXYLineChart("XY Chart", // Title
-                "x-axis", // x-axis Label
-                "y-axis", // y-axis Label
-                dataset, // Dataset
-                PlotOrientation.VERTICAL, // Plot Orientation
-                true, // Show Legend
-                true, // Use tooltips
-                false // Configure chart to generate URLs?
-                );
-        chart.setAntiAlias(true);
-
-        return chart;
+        // include plot in applet
+        return (plotpanel);
     }
 }
