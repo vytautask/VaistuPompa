@@ -1,9 +1,4 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * PartSelector.java
  *
  * Created on 2010-12-19, 13.25.16

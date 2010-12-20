@@ -1,7 +1,7 @@
 /*
  * MainForm.java
  *
- * Created on 2010-12-11, 22.19.31
+ * Created on 2010-11-11, 22.19.31
  */
 
 package vaistupompa;
@@ -14,8 +14,11 @@ import javax.swing.SpinnerNumberModel;
  * @author Vytautas
  */
 public class MainForm extends javax.swing.JApplet {
+    
     // <editor-fold defaultstate="collapsed" desc="Private Members">
-        private SimulationChartClass simuChart;
+
+    //private SimulationChartClass simuChart;
+
     //</editor-fold>
 
 
@@ -24,6 +27,7 @@ public class MainForm extends javax.swing.JApplet {
         initComponents();
 
         // <editor-fold desc="Set default values">
+
         this.getContentPane().setBackground(Color.white);
 
         SpinnerNumberModel model = new SpinnerNumberModel();
@@ -38,18 +42,10 @@ public class MainForm extends javax.swing.JApplet {
         model2.setValue(1);
         model2.setStepSize(1);
 
-        SpinnerNumberModel model3 = new SpinnerNumberModel();
-        model3.setMinimum(0);
-        model3.setMaximum(18000);
-        model3.setValue(1);
-        model3.setStepSize(1);
-
         this.jSpinnerT.setModel(model);
         this.jSpinnerDeltaT.setModel(model2);
-        this.jSpinnerLambda.setModel(model3);
-//</editor-fold>
 
-//        jTabbedPane1.insertTab("Grafikas", null, panel, null, 0);
+        //</editor-fold>
         
         PartSelector ps = new PartSelector();
         jSplitPane1.setLeftComponent(ps);
@@ -62,13 +58,11 @@ public class MainForm extends javax.swing.JApplet {
 
         jButton1 = new javax.swing.JButton();
         jPanelParameters = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jSpinnerDeltaT = new javax.swing.JSpinner();
         jSpinnerT = new javax.swing.JSpinner();
-        jSpinnerLambda = new javax.swing.JSpinner();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jSplitPane1 = new javax.swing.JSplitPane();
@@ -83,9 +77,6 @@ public class MainForm extends javax.swing.JApplet {
         });
 
         jPanelParameters.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel1.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 12));
-        jLabel1.setText("Vidutinis vaisto pareikalavimų skaičius per valandą:");
 
         jLabel2.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 12));
         jLabel2.setText("Vaistų išdavimo laiko limitas (sekundėmis):");
@@ -121,7 +112,7 @@ public class MainForm extends javax.swing.JApplet {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 605, Short.MAX_VALUE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 604, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Ten kur paspaust ir pažiūrėt galima", jPanel2);
@@ -135,28 +126,22 @@ public class MainForm extends javax.swing.JApplet {
                 .addGroup(jPanelParametersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelParametersLayout.createSequentialGroup()
                         .addGroup(jPanelParametersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(54, 54, 54)
                         .addGroup(jPanelParametersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jSpinnerDeltaT)
-                            .addComponent(jSpinnerT)
-                            .addComponent(jSpinnerLambda, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)))
+                            .addComponent(jSpinnerT)))
                     .addGroup(jPanelParametersLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(359, Short.MAX_VALUE))
+                .addContainerGap(396, Short.MAX_VALUE))
             .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 767, Short.MAX_VALUE)
         );
         jPanelParametersLayout.setVerticalGroup(
             jPanelParametersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelParametersLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelParametersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jSpinnerLambda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(42, 42, 42)
                 .addGroup(jPanelParametersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jSpinnerT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -200,7 +185,6 @@ public class MainForm extends javax.swing.JApplet {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -208,7 +192,6 @@ public class MainForm extends javax.swing.JApplet {
     private javax.swing.JPanel jPanelParameters;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner jSpinnerDeltaT;
-    private javax.swing.JSpinner jSpinnerLambda;
     private javax.swing.JSpinner jSpinnerT;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
