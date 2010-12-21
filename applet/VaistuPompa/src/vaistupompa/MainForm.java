@@ -7,6 +7,8 @@
 package vaistupompa;
 
 import java.awt.Color;
+import java.text.DecimalFormat;
+import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 
 /**
@@ -30,31 +32,52 @@ public class MainForm extends javax.swing.JApplet {
 
         this.getContentPane().setBackground(Color.white);
 
-        SpinnerNumberModel model = new SpinnerNumberModel();
-        model.setMinimum(0);
-        model.setMaximum(18000);
-        model.setValue(1);
-        model.setStepSize(1);
-
-        SpinnerNumberModel model2 = new SpinnerNumberModel();
-        model2.setMinimum(0);
-        model2.setMaximum(18000);
-        model2.setValue(1);
-        model2.setStepSize(1);
+        SpinnerNumberModel model = new SpinnerNumberModel(100, 1, 18000, 1);
+        SpinnerNumberModel model2 = new SpinnerNumberModel(10, 1, 18000, 1);
 
         this.jSpinnerT.setModel(model);
         this.jSpinnerDeltaT.setModel(model2);
+        
+        setSpinFormat(jSpinner1);
+        setSpinFormat(jSpinner2);
+        setSpinFormat(jSpinner3);
+        setSpinFormat(jSpinner4);
+        setSpinFormat(jSpinner5);
+        setSpinFormat(jSpinner6);
+        setSpinFormat(jSpinner7);
+        setSpinFormat(jSpinner8);
+        setSpinFormat(jSpinner9);
+        setSpinFormat(jSpinner10);
+
+        jSpinner2.setValue(0.5);
+        jSpinner3.setValue(0.2);
+        jSpinner4.setValue(0.09);
+        jSpinner5.setValue(0.008);
 
         //</editor-fold>
-        
-//        DataContainer[] data = null;
-//
-//        jTabbedPane1.insertTab("Grafikas", null,
-//                simuChart.CreateAdvacedChart(data), "Parodo visokius grafikus", 0);
 
         PartSelector ps = new PartSelector();
         jSplitPane1.setLeftComponent(ps);
         jSplitPane1.setDividerLocation(345);
+    }
+
+    private void setSpinFormat(JSpinner spinner){
+        JSpinner.NumberEditor editor = (JSpinner.NumberEditor)spinner.getEditor();
+        DecimalFormat format = editor.getFormat();
+        format.setMinimumFractionDigits(3);
+        spinner.updateUI();
+    }
+
+    private double getSpinnerValue(JSpinner spinner){
+        SpinnerNumberModel model = (SpinnerNumberModel)spinner.getModel();
+        return model.getNumber().intValue();
+    }
+
+    private void UpdateConsts(){
+        Constants.setK12(getSpinnerValue(jSpinner2));
+        Constants.setK21(getSpinnerValue(jSpinner3));
+        Constants.setK13(getSpinnerValue(jSpinner4));
+        Constants.setK31(getSpinnerValue(jSpinner5));
     }
 
     @SuppressWarnings("unchecked")
@@ -131,28 +154,30 @@ public class MainForm extends javax.swing.JApplet {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 752, Short.MAX_VALUE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 787, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 604, Short.MAX_VALUE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 605, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Simuliacijos rezultatai", jPanel2);
 
-        jLabel5.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 12));
         jLabel5.setText("ke1: ");
 
-        jLabel6.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 12)); // NOI18N
+        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(Double.valueOf(0.0d), null, null, Double.valueOf(1.0d)));
+
+        jLabel6.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 12));
         jLabel6.setText("k12:");
 
-        jLabel7.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 12)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 12));
         jLabel7.setText("k21:");
 
-        jLabel8.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 12)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 12));
         jLabel8.setText("k13:");
 
-        jLabel9.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 12)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 12));
         jLabel9.setText("k31:");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -199,19 +224,19 @@ public class MainForm extends javax.swing.JApplet {
                     .addComponent(jSpinner5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        jLabel10.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 12)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 12));
         jLabel10.setText("ke1: ");
 
-        jLabel11.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 12)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 12));
         jLabel11.setText("k12:");
 
-        jLabel12.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 12)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 12));
         jLabel12.setText("k21:");
 
-        jLabel13.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 12)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 12));
         jLabel13.setText("k13:");
 
-        jLabel14.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 12)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 12));
         jLabel14.setText("k31:");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -258,10 +283,10 @@ public class MainForm extends javax.swing.JApplet {
                     .addComponent(jSpinner10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        jLabel15.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 12)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 12));
         jLabel15.setText("Min reikšmės:");
 
-        jLabel16.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 12)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 12));
         jLabel16.setText("Max reikšmės:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -277,7 +302,7 @@ public class MainForm extends javax.swing.JApplet {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel16)
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(497, Short.MAX_VALUE))
+                .addContainerGap(508, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -290,7 +315,7 @@ public class MainForm extends javax.swing.JApplet {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(441, Short.MAX_VALUE))
+                .addContainerGap(447, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Paciento charakteristikų ribinės vertės", jPanel1);
@@ -322,7 +347,7 @@ public class MainForm extends javax.swing.JApplet {
                     .addGroup(jPanelParametersLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 757, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 792, Short.MAX_VALUE)
         );
         jPanelParametersLayout.setVerticalGroup(
             jPanelParametersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -361,6 +386,8 @@ public class MainForm extends javax.swing.JApplet {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        UpdateConsts();
+        
         SpinnerNumberModel model = (SpinnerNumberModel)this.jSpinnerT.getModel();
         int t = model.getNumber().intValue();
         model = (SpinnerNumberModel)this.jSpinnerDeltaT.getModel();
