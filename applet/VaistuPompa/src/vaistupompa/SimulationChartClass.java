@@ -15,37 +15,36 @@ import org.math.plot.PlotPanel;
  */
 public class SimulationChartClass {
 
-    public PlotPanel CreateAdvacedChart(ArrayList<DataContainer> data) {
+    public PlotPanel CreateAdvacedChart(ArrayList<DataContainer> pka, ArrayList<DataContainer> ipka) {
         Plot2DPanel plotpanel = new Plot2DPanel();
-        if (data != null) {
+        if (pka != null) {
             
-           
-            int n = data.size();
-            //double[][] datas1 = new double[n][n];
+            int n = pka.size();
             double[] datas1 = new double[n];
 
-            
-
             for (int i = 0; i < n; i++) {
-                datas1[i] = data.get(i).getSum2_out();
-                //System.out.println(data.get(0).getGenerator_out());
-                //for (int k = 0; k < n; k++) {
-                //    datas1[i][k] = data.get(i).getSum1_out();
-                //}
+                datas1[i] = pka.get(i).getSum2_out();
             }
             // PlotPanel construction
-
             plotpanel.addLegend("SOUTH");
 
-            // Data plots addition
-            //plotpanel.addGridPlot("datas1", datas1);
-            //plotpanel.addStaircasePlot("some name", datas1);
-            //plotpanel.addScatterPlot("name", datas1);
-            plotpanel.addLinePlot("line plot", datas1);
-            //plotpanel.addBarPlot(null, datas1);
-            
-            //plotpanel.addBarPlot("datas2", datas2);
+            plotpanel.addLinePlot("PKA line plot", datas1);
         }
+
+        if (ipka != null) {
+
+            int n = ipka.size();
+            double[] datas1 = new double[n];
+
+            for (int i = 0; i < n; i++) {
+                datas1[i] = ipka.get(i).getSum2_out();
+            }
+            // PlotPanel construction
+            plotpanel.addLegend("SOUTH");
+
+            plotpanel.addLinePlot("PKA line plot", datas1);
+        }
+
         return plotpanel;
     }
     //API suggestions are welcome
