@@ -49,10 +49,17 @@ public class MainForm extends javax.swing.JApplet {
         setSpinFormat(jSpinner9);
         setSpinFormat(jSpinner10);
 
-        jSpinner2.setValue(0.5);
-        jSpinner3.setValue(0.2);
-        jSpinner4.setValue(0.09);
-        jSpinner5.setValue(0.008);
+        jSpinner1.setValue(1.18);
+        jSpinner2.setValue(0.4);
+        jSpinner3.setValue(0.1);
+        jSpinner4.setValue(0.08);
+        jSpinner5.setValue(0.006);
+
+        jSpinner6.setValue(1.38);
+        jSpinner7.setValue(0.6);
+        jSpinner8.setValue(0.3);
+        jSpinner9.setValue(0.1);
+        jSpinner10.setValue(0.01);
 
         //</editor-fold>
 
@@ -73,11 +80,32 @@ public class MainForm extends javax.swing.JApplet {
         return model.getNumber().intValue();
     }
 
+    private double getRandom(double min, double max){
+        return Math.random() * (max - min) + min;
+    }
+
     private void UpdateConsts(){
-        Constants.setK12(getSpinnerValue(jSpinner2));
-        Constants.setK21(getSpinnerValue(jSpinner3));
-        Constants.setK13(getSpinnerValue(jSpinner4));
-        Constants.setK31(getSpinnerValue(jSpinner5));
+
+        double cl_min = getSpinnerValue(jSpinner1);
+        double cl_max = getSpinnerValue(jSpinner6);
+
+        double k12_min = getSpinnerValue(jSpinner2);
+        double k12_max = getSpinnerValue(jSpinner7);
+
+        double k21_min = getSpinnerValue(jSpinner3);
+        double k21_max = getSpinnerValue(jSpinner8);
+
+        double k13_min = getSpinnerValue(jSpinner4);
+        double k13_max = getSpinnerValue(jSpinner9);
+
+        double k31_min = getSpinnerValue(jSpinner5);
+        double k31_max = getSpinnerValue(jSpinner9);
+
+        Constants.setCl(getRandom(cl_min, cl_max));
+        Constants.setK12(getRandom(k12_min, k12_max));
+        Constants.setK21(getRandom(k21_min, k12_max));
+        Constants.setK13(getRandom(k13_min, k13_max));
+        Constants.setK31(getRandom(k31_min, k31_max));
     }
 
     @SuppressWarnings("unchecked")
