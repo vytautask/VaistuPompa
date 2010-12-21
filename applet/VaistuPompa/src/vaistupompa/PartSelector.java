@@ -11,10 +11,12 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.RenderingHints;
-import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import javax.swing.JTable;
+import javax.swing.table.AbstractTableModel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -23,6 +25,8 @@ import java.util.ArrayList;
 public class PartSelector extends javax.swing.JPanel {
 
     // <editor-fold defaultstate="collapsed" desc="Internal stuff">
+    //NOTE: Magic. do not touch
+    
     // <editor-fold defaultstate="collapsed" desc="Arrow classes">
     private abstract class EntryPoint {
 
@@ -303,9 +307,37 @@ public class PartSelector extends javax.swing.JPanel {
     private GraphicalElement[] agregatai;
     private SuperLine[] superLines;
     //</editor-fold>
-    public int SelectedIndex = -1;
-    public ActionEvent event = new ActionEvent(this, 1, "wtf");
 
+    void setDataPKA(ArrayList<DataContainer> data){
+        this.data_pka = data;
+    }
+
+    void setDataIPKA(ArrayList<DataContainer> data){
+        this.data_ipka = data;
+    }
+
+    void setTable(JTable table){
+        this.table = table;
+    }
+
+    void setshowMode(boolean  pka){
+        if(pka)
+            data = data_pka;
+        else
+            data = data_ipka;
+        
+        System.out.print(data);
+
+        OnSeletionChanged();
+    }
+
+    JTable table = null;
+    ArrayList<DataContainer> data = null;
+    ArrayList<DataContainer> data_pka = null;
+    ArrayList<DataContainer> data_ipka = null;
+
+    public int SelectedIndex = -1;
+    
     /** Creates new form PartSelector */
     public PartSelector() {
         initComponents();
@@ -477,9 +509,10 @@ public class PartSelector extends javax.swing.JPanel {
             }
         } else {
             for (int i = 0; i < agregatai.length; i++) {
-                if (agregatai[i].isInside(p)) {
+                if (agregatai[i].CanSelect && agregatai[i].isInside(p)) {
                     SelectedIndex = i;
                     agregatai[i].IsSelected = true;
+                    OnSeletionChanged();
                     break;
                 }
             }
@@ -514,6 +547,169 @@ public class PartSelector extends javax.swing.JPanel {
             }
         });
     }
+    //</editor-fold>
+
+    // <editor-fold defaultstate="collapsed" desc="data table setters">
+    
+    void showGenerator() {
+       Double [][] values = new Double[data.size()][4];
+       
+       for(int i = 0; i < data.size(); i++){
+           values[i][0] = data.get(i).getGenerator_x1();
+           values[i][1] = data.get(i).getGenerator_x2();
+           values[i][2] = data.get(i).getGenerator_x3();
+           values[i][3] = data.get(i).getGenerator_out();
+       }
+
+       DefaultTableModel model = new DefaultTableModel(values, new String[]{"1", "2", "3", "out"});
+       table.setModel(model);
+    }
+
+    void showSum1() {
+       Double [][] values = new Double[data.size()][6];
+
+       for(int i = 0; i < data.size(); i++){
+           values[i][0] = data.get(i).getSum1_x1();
+           values[i][1] = data.get(i).getSum1_x2();
+           values[i][2] = data.get(i).getSum1_x3();
+           values[i][3] = data.get(i).getSum1_x4();
+           values[i][4] = data.get(i).getSum1_x5();
+           values[i][5] = data.get(i).getSum1_out();
+       }
+
+       DefaultTableModel model = new DefaultTableModel(values, new String[]{"1", "2", "3", "4", "5", "out"});
+       table.setModel(model);
+    }
+
+    void showSum2() {
+       Double [][] values = new Double[data.size()][3];
+
+       for(int i = 0; i < data.size(); i++){
+           values[i][0] = data.get(i).getSum2_x1();
+           values[i][1] = data.get(i).getSum2_x2();
+           values[i][2] = data.get(i).getSum2_out();
+       }
+
+       DefaultTableModel model = new DefaultTableModel(values, new String[]{"1", "2", "out"});
+       table.setModel(model);
+    }
+
+    void showSum3() {
+       Double [][] values = new Double[data.size()][3];
+
+       for(int i = 0; i < data.size(); i++){
+           values[i][0] = data.get(i).getSum3_x1();
+           values[i][1] = data.get(i).getSum3_x2();
+           values[i][2] = data.get(i).getSum3_out();
+       }
+
+       DefaultTableModel model = new DefaultTableModel(values, new String[]{"1", "2", "out"});
+       table.setModel(model);
+    }
+
+    void showInteg1() {
+       Double [][] values = new Double[data.size()][3];
+
+       for(int i = 0; i < data.size(); i++){
+           values[i][0] = data.get(i).getInteg1_x1();
+           values[i][1] = data.get(i).getInteg1_x2();
+           values[i][2] = data.get(i).getInteg1_out();
+       }
+
+       DefaultTableModel model = new DefaultTableModel(values, new String[]{"1", "2", "out"});
+       table.setModel(model);
+    }
+
+    void showInteg2() {
+       Double [][] values = new Double[data.size()][2];
+
+       for(int i = 0; i < data.size(); i++){
+           values[i][0] = data.get(i).getInteg2_x1();
+           values[i][1] = data.get(i).getInteg2_out();
+       }
+
+       DefaultTableModel model = new DefaultTableModel(values, new String[]{"1", "out"});
+       table.setModel(model);
+    }
+
+    void showInteg3() {
+       Double [][] values = new Double[data.size()][2];
+
+       for(int i = 0; i < data.size(); i++){
+           values[i][0] = data.get(i).getInteg3_x1();
+           values[i][1] = data.get(i).getInteg3_out();
+       }
+
+       DefaultTableModel model = new DefaultTableModel(values, new String[]{"1", "out"});
+       table.setModel(model);
+    }
+
+    void showPump() {
+       Boolean [][] values = new Boolean[data.size()][1];
+
+       for(int i = 0; i < data.size(); i++){
+           values[i][0] = data.get(i).isPompa_out();
+       }
+
+       DefaultTableModel model = new DefaultTableModel(values, new String[]{"out"});
+       table.setModel(model);
+    }
+
+    void showOut() {
+       Double [][] values = new Double[data.size()][1];
+
+       for(int i = 0; i < data.size(); i++){
+           values[i][0] = data.get(i).getInteg2_out();
+       }
+
+       DefaultTableModel model = new DefaultTableModel(values, new String[]{"out"});
+       table.setModel(model);
+    }
+
+    void OnSeletionChanged(){
+        if(table == null)
+            return;
+        
+        table.setModel(new AbstractTableModel() {
+            public int getColumnCount() { return 0; }
+            public int getRowCount() { return 0;}
+            public Object getValueAt(int row, int col) { return 0; }
+        });
+
+        if(data == null)
+            return;
+
+        switch(SelectedIndex){
+            case 0: //generatorius
+                showGenerator();
+                break;
+            case 1://+X1
+                showSum1();
+                break;
+            case 2://+X2
+                showSum2();
+                break;
+            case 3://+X3
+                showSum3();
+                break;
+            case 4://dX1
+                showInteg1();
+                break;
+            case 5://dX2
+                showInteg2();
+                break;
+            case 6://dX3
+                showInteg3();
+                break;
+            case 7://pompa
+                showPump();
+                break;
+            case 8://out
+                showOut();
+                break;
+        }
+    }
+
     //</editor-fold>
 
     @SuppressWarnings("unchecked")

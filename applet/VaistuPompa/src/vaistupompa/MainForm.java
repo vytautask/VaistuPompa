@@ -3,11 +3,13 @@
  *
  * Created on 2010-11-11, 22.19.31
  */
-
 package vaistupompa;
 
 import java.awt.Color;
+import java.awt.Event;
+import java.awt.event.ItemEvent;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 
@@ -16,13 +18,11 @@ import javax.swing.SpinnerNumberModel;
  * @author Vytautas
  */
 public class MainForm extends javax.swing.JApplet {
-    
+
     // <editor-fold defaultstate="collapsed" desc="Private Members">
-
     private SimulationChartClass simuChart = new SimulationChartClass();
-
+    private PartSelector ps;
     //</editor-fold>
-
 
     @Override
     public void init() {
@@ -37,7 +37,7 @@ public class MainForm extends javax.swing.JApplet {
 
         this.jSpinnerT.setModel(model);
         this.jSpinnerDeltaT.setModel(model2);
-        
+
         setSpinFormat(jSpinner1);
         setSpinFormat(jSpinner2);
         setSpinFormat(jSpinner3);
@@ -49,35 +49,64 @@ public class MainForm extends javax.swing.JApplet {
         setSpinFormat(jSpinner9);
         setSpinFormat(jSpinner10);
 
-        jSpinner2.setValue(0.5);
-        jSpinner3.setValue(0.2);
-        jSpinner4.setValue(0.09);
-        jSpinner5.setValue(0.008);
+        jSpinner1.setValue(1.18);
+        jSpinner2.setValue(0.4);
+        jSpinner3.setValue(0.1);
+        jSpinner4.setValue(0.08);
+        jSpinner5.setValue(0.006);
+
+        jSpinner6.setValue(1.38);
+        jSpinner7.setValue(0.6);
+        jSpinner8.setValue(0.3);
+        jSpinner9.setValue(0.1);
+        jSpinner10.setValue(0.01);
 
         //</editor-fold>
 
-        PartSelector ps = new PartSelector();
+        ps = new PartSelector();
+        ps.setTable(jTable1);
         jSplitPane1.setLeftComponent(ps);
         jSplitPane1.setDividerLocation(345);
     }
 
-    private void setSpinFormat(JSpinner spinner){
-        JSpinner.NumberEditor editor = (JSpinner.NumberEditor)spinner.getEditor();
+    private void setSpinFormat(JSpinner spinner) {
+        JSpinner.NumberEditor editor = (JSpinner.NumberEditor) spinner.getEditor();
         DecimalFormat format = editor.getFormat();
         format.setMinimumFractionDigits(3);
         spinner.updateUI();
     }
 
-    private double getSpinnerValue(JSpinner spinner){
-        SpinnerNumberModel model = (SpinnerNumberModel)spinner.getModel();
+    private double getSpinnerValue(JSpinner spinner) {
+        SpinnerNumberModel model = (SpinnerNumberModel) spinner.getModel();
         return model.getNumber().intValue();
     }
 
-    private void UpdateConsts(){
-        Constants.setK12(getSpinnerValue(jSpinner2));
-        Constants.setK21(getSpinnerValue(jSpinner3));
-        Constants.setK13(getSpinnerValue(jSpinner4));
-        Constants.setK31(getSpinnerValue(jSpinner5));
+    private double getRandom(double min, double max) {
+        return Math.random() * (max - min) + min;
+    }
+
+    private void UpdateConsts() {
+
+        double cl_min = getSpinnerValue(jSpinner1);
+        double cl_max = getSpinnerValue(jSpinner6);
+
+        double k12_min = getSpinnerValue(jSpinner2);
+        double k12_max = getSpinnerValue(jSpinner7);
+
+        double k21_min = getSpinnerValue(jSpinner3);
+        double k21_max = getSpinnerValue(jSpinner8);
+
+        double k13_min = getSpinnerValue(jSpinner4);
+        double k13_max = getSpinnerValue(jSpinner9);
+
+        double k31_min = getSpinnerValue(jSpinner5);
+        double k31_max = getSpinnerValue(jSpinner9);
+
+        Constants.setCl(getRandom(cl_min, cl_max));
+        Constants.setK12(getRandom(k12_min, k12_max));
+        Constants.setK21(getRandom(k21_min, k21_max));
+        Constants.setK13(getRandom(k13_min, k13_max));
+        Constants.setK31(getRandom(k31_min, k31_max));
     }
 
     @SuppressWarnings("unchecked")
@@ -93,6 +122,10 @@ public class MainForm extends javax.swing.JApplet {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jSplitPane1 = new javax.swing.JSplitPane();
+        jPanel6 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jComboBox1 = new javax.swing.JComboBox();
+        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
@@ -135,6 +168,34 @@ public class MainForm extends javax.swing.JApplet {
 
         jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "PKA", "IPKA" }));
+        jComboBox1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                PumpType_SelectionChanged(evt);
+            }
+        });
+
+        jLabel1.setText("Pompos tipas");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -148,17 +209,39 @@ public class MainForm extends javax.swing.JApplet {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jSplitPane1.setRightComponent(jScrollPane1);
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 738, Short.MAX_VALUE)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(439, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 540, Short.MAX_VALUE))
+        );
+
+        jSplitPane1.setRightComponent(jPanel6);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 787, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jSplitPane1)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 605, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jSplitPane1)
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Simuliacijos rezultatai", jPanel2);
@@ -302,7 +385,7 @@ public class MainForm extends javax.swing.JApplet {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel16)
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(508, Short.MAX_VALUE))
+                .addContainerGap(485, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -315,7 +398,7 @@ public class MainForm extends javax.swing.JApplet {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(447, Short.MAX_VALUE))
+                .addContainerGap(473, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Paciento charakteristikų ribinės vertės", jPanel1);
@@ -341,13 +424,13 @@ public class MainForm extends javax.swing.JApplet {
                         .addGap(54, 54, 54)
                         .addGroup(jPanelParametersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jSpinnerDeltaT)
-                            .addComponent(jSpinnerT))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 360, Short.MAX_VALUE)
-                        .addComponent(jButton1))
+                            .addComponent(jSpinnerT)))
                     .addGroup(jPanelParametersLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 792, Short.MAX_VALUE)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 309, Short.MAX_VALUE)
+                .addComponent(jButton1))
+            .addComponent(jTabbedPane1)
         );
         jPanelParametersLayout.setVerticalGroup(
             jPanelParametersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -363,7 +446,7 @@ public class MainForm extends javax.swing.JApplet {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 632, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1)
                 .addContainerGap())
         );
 
@@ -373,36 +456,50 @@ public class MainForm extends javax.swing.JApplet {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanelParameters, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanelParameters, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(588, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanelParameters, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(221, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         UpdateConsts();
-        
-        SpinnerNumberModel model = (SpinnerNumberModel)this.jSpinnerT.getModel();
+
+        SpinnerNumberModel model = (SpinnerNumberModel) this.jSpinnerT.getModel();
         int t = model.getNumber().intValue();
-        model = (SpinnerNumberModel)this.jSpinnerDeltaT.getModel();
+        model = (SpinnerNumberModel) this.jSpinnerDeltaT.getModel();
         int deltaT = model.getNumber().intValue();
 
         Simulator s = new Simulator(t, deltaT);
         s.simulate();
-        
+
+        ArrayList<DataContainer> pka = s.getValuesList_PKA();
+        ArrayList<DataContainer> ipka = s.getValuesList_iPKA();
+
         jTabbedPane1.insertTab("Grafikas", null,
-                simuChart.CreateAdvacedChart(s.getValuesList_PKA()), "Parodo visokius grafikus", 0);
+                simuChart.CreateAdvacedChart(pka, ipka), "Parodo visokius grafikus", 0);
+        ps.setDataPKA(pka);
+        ps.setDataIPKA(ipka);
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void PumpType_SelectionChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PumpType_SelectionChanged
+        if(evt.getStateChange() == ItemEvent.SELECTED){
+            System.out.println(evt.getItem());
+            ps.setshowMode(evt.getItem().toString().equalsIgnoreCase("PKA"));
+        }
+    }//GEN-LAST:event_PumpType_SelectionChanged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -422,6 +519,8 @@ public class MainForm extends javax.swing.JApplet {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanelParameters;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner jSpinner1;
@@ -440,5 +539,4 @@ public class MainForm extends javax.swing.JApplet {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
-
 }
