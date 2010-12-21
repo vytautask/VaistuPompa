@@ -52,9 +52,16 @@ public class Simulator {
             cont.setGenerator_x2(_x2);
             cont.setGenerator_x3(_x3);
 
-            timeToNextDose = generator.generate(_x1, _x2, _x3);
+            if (timeToNextDose <= 0 || timeToNextDose == Integer.MAX_VALUE || timeToNextDose == (i-1))
+            {
+                int generated = generator.generate(_x1, _x2, _x3);
+                if (generated != Integer.MAX_VALUE)
+                    timeToNextDose = generated + i;
+                else
+                    timeToNextDose = Integer.MAX_VALUE;
+            }
 
-            cont.setGenerator_out(timeToNextDose - i);
+            cont.setGenerator_out(timeToNextDose);
 
             if (timeToNextDose == i) {
                 if (pka_pump.allowed(i)) {
@@ -64,10 +71,7 @@ public class Simulator {
                     cont.setPompa_out(true);
                 } else {
                     cont.setPompa_out(false);
-                    cont.setGenerator_out(Integer.MAX_VALUE);
                 }
-            } else {
-                cont.setGenerator_out(Integer.MAX_VALUE);
             }
 
             IIntegrator integrator1 = new Integrator();
@@ -112,9 +116,9 @@ public class Simulator {
 
             sumator1.setXValues(pokyt1, pokyt2, pokyt3);
 
-            //_x1 = sumator1.getSumK1(); //vaisto kiekis kraujo plazmoje einamuoju laiko momentu (i) 1 kompartamente
-            //_x2 = sumator1.getSumK2(); //vaisto kiekis kraujo plazmoje einamuoju laiko momentu (i) 2 kompartamente
-            //_x3 = sumator1.getSumK3(); //vaisto kiekis kraujo plazmoje einamuoju laiko momentu (i) 3 kompartamente
+            //_x1 += sumator1.getSumK1(); //vaisto kiekis kraujo plazmoje einamuoju laiko momentu (i) 1 kompartamente
+            //_x2 += sumator1.getSumK2(); //vaisto kiekis kraujo plazmoje einamuoju laiko momentu (i) 2 kompartamente
+            //_x3 += sumator1.getSumK3(); //vaisto kiekis kraujo plazmoje einamuoju laiko momentu (i) 3 kompartamente
 
             _x1 += pokyt1;
             _x2 += pokyt2;

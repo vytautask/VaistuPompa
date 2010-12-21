@@ -41,7 +41,7 @@ public class Generator implements IGenerator {
 	{
             Random rnd = new Random();
 
-            generated = rnd.nextInt(Constants.getMaxSeconds())+1;
+            generated = rnd.nextInt(Constants.getMaxSeconds());
 	}
 
         return generated;
