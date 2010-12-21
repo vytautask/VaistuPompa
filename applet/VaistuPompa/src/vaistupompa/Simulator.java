@@ -12,9 +12,9 @@ public class Simulator {
 
     private int _t;
     private int _deltaT;
-    private double _x1 = 0.01; //vaisto kiekis kraujyje 1 kompartamente
-    private double _x2 = 0.01; //vaisto kiekis kraujyje 2 kompartamente
-    private double _x3 = 0.01; //vaisto kiekis kraujyje 3 kompartamente
+    private double _x1 = 0.001; //vaisto kiekis kraujyje 1 kompartamente
+    private double _x2 = 0.001; //vaisto kiekis kraujyje 2 kompartamente
+    private double _x3 = 0.001; //vaisto kiekis kraujyje 3 kompartamente
 
     private double _x1_1 = _x1; //tas pats iPKA pompoj
     private double _x2_1 = _x2; //tas pats iPKA pompoj
@@ -35,7 +35,8 @@ public class Simulator {
 
     public void simulate() {
         IGenerator generator = new Generator();
-        int timeToNextDose = generator.generate(_x1, _x2, _x3);
+        //int timeToNextDose = generator.generate(_x1, _x2, _x3);
+        int timeToNextDose = 0;
         int timeToNextDose2 = generator.generate(_x1_1, _x2_1, _x3_1);
 
         Pump pka_pump = new Pump(_deltaT);
@@ -133,6 +134,7 @@ public class Simulator {
 
         // </editor-fold>
 
+        /*
         // <editor-fold defaultstate="collapsed" desc="iPKA pompa">
 
         setValuesList_iPKA(new ArrayList<DataContainer>());
@@ -145,13 +147,20 @@ public class Simulator {
             cont.setGenerator_x2(_x2_1);
             cont.setGenerator_x3(_x3_1);
 
+            if (timeToNextDose2 <= 0 || timeToNextDose2 == Integer.MAX_VALUE || timeToNextDose2 == (i-1))
+            {
+                int generated = generator.generate(_x1, _x2, _x3);
+                if (generated != Integer.MAX_VALUE)
+                    timeToNextDose2 = generated + i;
+                else
+                    timeToNextDose2 = Integer.MAX_VALUE;
+            }
+
+            cont.setGenerator_out(timeToNextDose);
+
             if (timeToNextDose2 == i) {
                 if (ipka_pump.allowed(i)) {
                     timeToDistribute = _deltaT;
-
-                    timeToNextDose2 = i + generator.generate(_x1_1, _x2_1, _x3_1);
-
-                    cont.setGenerator_out(timeToNextDose2 - i);
 
                     cont.setPompa_out(true);
                 } else {
@@ -166,8 +175,6 @@ public class Simulator {
                 _x1_1 += Constants.getDosage()/_deltaT;
                 timeToDistribute--;
             }
-
-            cont.setGenerator_x1(_x1_1);
 
             IIntegrator integrator1 = new Integrator();
             integrator1.setCl(Constants.getCl());
@@ -211,9 +218,13 @@ public class Simulator {
 
             sumator1.setXValues(pokyt1, pokyt2, pokyt3);
 
-            _x1_1 = sumator1.getSumK1(); //vaisto kiekis kraujo plazmoje einamuoju laiko momentu (i) 1 kompartamente
-            _x2_1 = sumator1.getSumK2(); //vaisto kiekis kraujo plazmoje einamuoju laiko momentu (i) 2 kompartamente
-            _x3_1 = sumator1.getSumK3(); //vaisto kiekis kraujo plazmoje einamuoju laiko momentu (i) 3 kompartamente
+            //_x1_1 = sumator1.getSumK1(); //vaisto kiekis kraujo plazmoje einamuoju laiko momentu (i) 1 kompartamente
+            //_x2_1 = sumator1.getSumK2(); //vaisto kiekis kraujo plazmoje einamuoju laiko momentu (i) 2 kompartamente
+            //_x3_1 = sumator1.getSumK3(); //vaisto kiekis kraujo plazmoje einamuoju laiko momentu (i) 3 kompartamente
+
+            _x1_1 += pokyt1;
+            _x2_1 += pokyt2;
+            _x3_1 += pokyt3;
 
             cont.setSum1_out(_x1_1);
             cont.setSum2_out(_x2_1);
@@ -223,6 +234,7 @@ public class Simulator {
         }
 
         // </editor-fold>
+         */
     }
 
     /**

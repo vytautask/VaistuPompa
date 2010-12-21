@@ -35,9 +35,7 @@ public class Integrator implements IIntegrator {
     @Override
     public double calculate1Compartment()
     {
-        double result = 0.0;
-
-        result = getK21() * getX2();
+        double result = getK21() * getX2();
         result -= (getK12() * getX1());
         result += (getK31() * getX3());
         result -= (getK13() * getX1());
@@ -49,9 +47,7 @@ public class Integrator implements IIntegrator {
     @Override
     public double calculate2Compartment()
     {
-        double result = 0.0;
-
-        result = getK12() * getX1();
+        double result = getK12() * getX1();
         result -= (getK21() * getX2());
 
         return result;
@@ -60,9 +56,7 @@ public class Integrator implements IIntegrator {
     @Override
     public double calculate3Compartment()
     {
-        double result = 0.0;
-
-        result = getK13() * getX1();
+        double result = (getK13() * getX1());
         result -= (getK31() * getX3());
 
         return result;
