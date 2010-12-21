@@ -38,10 +38,10 @@ public class Integrator implements IIntegrator {
         double result = 0.0;
 
         result = getK21() * getX2();
-        result = result - (getK12() * getX1());
-        result = result + (getK31() * getX3());
-        result = result - (getK13() * getX1());
-        result = result - (getCl() * getX1());
+        result -= (getK12() * getX1());
+        result += (getK31() * getX3());
+        result -= (getK13() * getX1());
+        result -= (getCl() * getX1());
 
         return result;
     }
@@ -52,7 +52,7 @@ public class Integrator implements IIntegrator {
         double result = 0.0;
 
         result = getK12() * getX1();
-        result = result - (getK21() * getX2());
+        result -= (getK21() * getX2());
 
         return result;
     }
@@ -63,7 +63,7 @@ public class Integrator implements IIntegrator {
         double result = 0.0;
 
         result = getK13() * getX1();
-        result = result - (getK31() * getX3());
+        result -= (getK31() * getX3());
 
         return result;
     }

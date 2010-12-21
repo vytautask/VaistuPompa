@@ -370,7 +370,7 @@ public class MainForm extends javax.swing.JApplet {
         s.simulate();
         
         jTabbedPane1.insertTab("Grafikas", null,
-                simuChart.CreateAdvacedChart(s.getValuesList_iPKA()), "Parodo visokius grafikus", 0);
+                simuChart.CreateAdvacedChart(s.getValuesList_PKA()), "Parodo visokius grafikus", 0);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

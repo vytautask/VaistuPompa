@@ -4,9 +4,10 @@
  */
 package vaistupompa;
 
-import java.io.Console;
 import java.util.ArrayList;
+import org.math.plot.Plot2DPanel;
 import org.math.plot.Plot3DPanel;
+import org.math.plot.PlotPanel;
 
 /**
  *
@@ -14,28 +15,35 @@ import org.math.plot.Plot3DPanel;
  */
 public class SimulationChartClass {
 
-    public Plot3DPanel CreateAdvacedChart(ArrayList<DataContainer> data) {
-        Plot3DPanel plotpanel = new Plot3DPanel();
+    public PlotPanel CreateAdvacedChart(ArrayList<DataContainer> data) {
+        Plot2DPanel plotpanel = new Plot2DPanel();
         if (data != null) {
             
            
             int n = data.size();
-            double[][] datas1 = new double[n][n];
+            //double[][] datas1 = new double[n][n];
+            double[] datas1 = new double[n];
 
             
 
             for (int i = 0; i < n; i++) {
-                System.out.println(data.get(0).getGenerator_out());
-                for (int k = 0; k < n; k++) {
-                    datas1[i][k] = data.get(i).getSum1_out();
-                }
+                datas1[i] = data.get(i).getSum2_out();
+                //System.out.println(data.get(0).getGenerator_out());
+                //for (int k = 0; k < n; k++) {
+                //    datas1[i][k] = data.get(i).getSum1_out();
+                //}
             }
             // PlotPanel construction
 
             plotpanel.addLegend("SOUTH");
 
             // Data plots addition
-            plotpanel.addGridPlot("datas1", datas1);
+            //plotpanel.addGridPlot("datas1", datas1);
+            //plotpanel.addStaircasePlot("some name", datas1);
+            //plotpanel.addScatterPlot("name", datas1);
+            plotpanel.addLinePlot("line plot", datas1);
+            //plotpanel.addBarPlot(null, datas1);
+            
             //plotpanel.addBarPlot("datas2", datas2);
         }
         return plotpanel;

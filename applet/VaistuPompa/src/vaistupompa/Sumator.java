@@ -66,7 +66,7 @@ public class Sumator implements ISumator {
 
     /**
      * Calculates sum value
-     * @return 1 kompartament sum value
+     * @return 1 kompartamento suma
      */
     public double getSumK1()
     {
@@ -78,7 +78,7 @@ public class Sumator implements ISumator {
 
     /**
      * Calculates sum value
-     * @return 2 kompartament sum value
+     * @return 2 kompartamento suma
      */
     public double getSumK2()
     {
@@ -90,7 +90,7 @@ public class Sumator implements ISumator {
 
     /**
      * Calculates sum value
-     * @return 3 kompartament sum value
+     * @return 3 kompartamento suma
      */
     public double getSumK3()
     {
