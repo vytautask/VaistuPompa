@@ -6,10 +6,10 @@
 package vaistupompa;
 
 import java.awt.Color;
-import java.awt.Event;
 import java.awt.event.ItemEvent;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Random;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 
@@ -78,11 +78,15 @@ public class MainForm extends javax.swing.JApplet {
 
     private double getSpinnerValue(JSpinner spinner) {
         SpinnerNumberModel model = (SpinnerNumberModel) spinner.getModel();
-        return model.getNumber().intValue();
+        return model.getNumber().doubleValue();
     }
 
     private double getRandom(double min, double max) {
-        return Math.random() * (max - min) + min;
+        Random rnd = new Random();
+        double number = rnd.nextDouble()*(max-min);
+        number += min;
+        
+        return number;
     }
 
     private void UpdateConsts() {

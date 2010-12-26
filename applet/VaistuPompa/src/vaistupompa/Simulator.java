@@ -12,9 +12,9 @@ public class Simulator {
 
     private int _t;
     private int _deltaT;
-    private double _x1 = 0.001; //vaisto kiekis kraujyje 1 kompartamente
-    private double _x2 = 0.001; //vaisto kiekis kraujyje 2 kompartamente
-    private double _x3 = 0.001; //vaisto kiekis kraujyje 3 kompartamente
+    private double _x1 = 0.001d; //vaisto kiekis kraujyje 1 kompartamente
+    private double _x2 = 0.001d; //vaisto kiekis kraujyje 2 kompartamente
+    private double _x3 = 0.001d; //vaisto kiekis kraujyje 3 kompartamente
 
     private double _x1_1 = _x1; //tas pats iPKA pompoj
     private double _x2_1 = _x2; //tas pats iPKA pompoj
@@ -22,6 +22,7 @@ public class Simulator {
 
     private ArrayList<DataContainer> _valuesList_PKA;
     private ArrayList<DataContainer> _valuesList_iPKA;
+    
     // </editor-fold>
 
     // <editor-fold defaultstate="collapsed" desc="Ctor">
@@ -121,9 +122,16 @@ public class Simulator {
             //_x2 += sumator1.getSumK2(); //vaisto kiekis kraujo plazmoje einamuoju laiko momentu (i) 2 kompartamente
             //_x3 += sumator1.getSumK3(); //vaisto kiekis kraujo plazmoje einamuoju laiko momentu (i) 3 kompartamente
 
-            _x1 += pokyt1;
-            _x2 += pokyt2;
-            _x3 += pokyt3;
+            _x1 = _x1 + pokyt1;
+            integrator1.setX1(_x1);
+            _x2 = _x2 + integrator1.calculate2Compartment();
+            integrator1.setX2(_x2);
+            integrator1.setX3(_x3);
+            _x3 = _x3 + integrator1.calculate3Compartment();
+
+            cont.setInteg1_out(pokyt1);
+            cont.setInteg2_out(pokyt2);
+            cont.setInteg3_out(pokyt3);
 
             cont.setSum1_out(_x1);
             cont.setSum2_out(_x2);
@@ -134,7 +142,7 @@ public class Simulator {
 
         // </editor-fold>
 
-        /*
+
         // <editor-fold defaultstate="collapsed" desc="iPKA pompa">
 
         setValuesList_iPKA(new ArrayList<DataContainer>());
@@ -234,7 +242,6 @@ public class Simulator {
         }
 
         // </editor-fold>
-         */
     }
 
     /**

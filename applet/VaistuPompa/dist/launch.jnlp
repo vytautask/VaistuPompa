@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<jnlp codebase="file:/C:/Users/Jonas/Desktop/soft/VaistuPompa/applet/VaistuPompa/dist/" href="launch.jnlp" spec="1.0+">
+<jnlp codebase="file:/C:/Users/Vytautas/Desktop/mokslai/pranevicius/VaistuPompa/applet/VaistuPompa/dist/" href="launch.jnlp" spec="1.0+">
     <information>
         <title>VaistuPompa</title>
         <vendor>Vaistų pompos grupė</vendor>
@@ -18,9 +18,10 @@
 
 
     <jar href="lib/jmathio.jar"/>
-<jar href="lib/jmathplot.1.jar"/>
+<jar href="lib/groovylab.jar"/>
+<jar href="lib/jmatharray.jar"/>
 </resources>
-    <applet-desc height="700" main-class="vaistupompa.MainForm" name="VaistuPompa" width="300">
+    <applet-desc height="400" main-class="vaistupompa.MainForm" name="VaistuPompa" width="300">
 
     </applet-desc>
 </jnlp>

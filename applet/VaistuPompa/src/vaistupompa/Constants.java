@@ -8,15 +8,15 @@ public class Constants {
     
     // <editor-fold defaultstate="collapsed" desc="Private members">
 
-    private static double _k12 = 0.5;//0.0;
-    private static double _k21 = 0.2;//0.0;
-    private static double _k31 = 0.008;//0.0;
-    private static double _k13 = 0.09;//0.0;
-    private static double _cl = 1.28;//0.0;
-    private static double _vss = 0.0;
-    private static double _painConst = 0.01;//0.0;
+    private static double _k12 = 0.5d;//0.0;
+    private static double _k21 = 0.2d;//0.0;
+    private static double _k31 = 0.008d;//0.0;
+    private static double _k13 = 0.09d;//0.0;
+    private static double _cl = 1.28d;//0.0;
+    private static double _vss = 0.0d;
+    private static double _painConst = 0.01d;//0.0;
     private static int _maxSeconds = 1; //buvo 1800
-    private static double _dosage = 0.12;//0.0;
+    private static double _dosage = 0.12d;//0.0;
 
     // </editor-fold>
 
