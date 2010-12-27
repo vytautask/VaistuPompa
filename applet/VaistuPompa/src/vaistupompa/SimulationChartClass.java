@@ -15,33 +15,14 @@ public class SimulationChartClass {
         try {
             Plot2DPanel plotpanel = new Plot2DPanel();
             if (pka != null) {
-
-                int n = pka.size();
-                double[] datas1 = new double[n];
-
-                for (int i = 0; i < n; i++) {
-                    //if(pka.get(i).getSum1_out())
-                    datas1[i] = pka.get(i).getSum2_out();
-                }
-                // PlotPanel construction
-                plotpanel.addLegend("SOUTH");
-
-                plotpanel.addLinePlot("PKA line plot", datas1);
+                plotpanel.addLinePlot("PKA line plot", getSum1PlotData(pka));
             }
 
             if (ipka != null) {
-
-                int n = ipka.size();
-                double[] datas1 = new double[n];
-
-                for (int i = 0; i < n; i++) {
-                    datas1[i] = ipka.get(i).getSum2_out();
-                }
-                // PlotPanel construction
-                plotpanel.addLegend("SOUTH");
-
-                plotpanel.addLinePlot("iPKA line plot", datas1);
+                plotpanel.addLinePlot("iPKA line plot", getSum1PlotData(ipka));
             }
+
+            plotpanel.addLegend("WEST");
 
             return plotpanel;
 
@@ -51,5 +32,49 @@ public class SimulationChartClass {
             
             return null;
         }
+    }
+
+    private double [] getSum1PlotData(ArrayList<DataContainer> data) {
+        double[] result = null;
+
+        if (data != null) {
+            int n = data.size();
+            result = new double[n];
+            for (int i = 0; i < n; i++) {
+                result[i] = data.get(i).getSum1_out();
+            }
+        }
+
+        return result;
+    }
+
+
+    private double [] getSum2PlotData(ArrayList<DataContainer> data) {
+        double[] result = null;
+
+        if (data != null) {
+            int n = data.size();
+            result = new double[n];
+            for (int i = 0; i < n; i++) {
+                result[i] = data.get(i).getSum2_out();
+            }
+        }
+
+        return result;
+    }
+
+
+    private double [] getSum3PlotData(ArrayList<DataContainer> data) {
+        double[] result = null;
+
+        if (data != null) {
+            int n = data.size();
+            result = new double[n];
+            for (int i = 0; i < n; i++) {
+                result[i] = data.get(i).getSum3_out();
+            }
+        }
+
+        return result;
     }
 }

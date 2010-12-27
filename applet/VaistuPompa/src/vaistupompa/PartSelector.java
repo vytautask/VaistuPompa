@@ -310,14 +310,17 @@ public class PartSelector extends javax.swing.JPanel {
 
     void setDataPKA(ArrayList<DataContainer> data){
         this.data_pka = data;
+        OnSeletionChanged();
     }
 
     void setDataIPKA(ArrayList<DataContainer> data){
         this.data_ipka = data;
+        OnSeletionChanged();
     }
 
     void setTable(JTable table){
         this.table = table;
+        OnSeletionChanged();
     }
 
     void setshowMode(boolean  pka){
@@ -406,20 +409,20 @@ public class PartSelector extends javax.swing.JPanel {
         superLines[5].AddPoint(agregatai[4].getInPoint(1));
 
         //dX1 -> out
-        tmp = agregatai[4].getOutPoint(0);
-        tmp.PreferSpanY = false;
-        superLines[6].AddPoint(tmp);
-        superLines[6].AddPoint(new EmptyPoint(new Point(700, 140), true));
-        superLines[6].AddPoint(agregatai[8].getInPoint(0));
+//        tmp = agregatai[4].getOutPoint(0);
+//        tmp.PreferSpanY = false;
+//        superLines[6].AddPoint(tmp);
+//        superLines[6].AddPoint(new EmptyPoint(new Point(700, 140), true));
+//        superLines[6].AddPoint(agregatai[8].getInPoint(0));
 
         //dX2 -> out
         superLines[7].AddPoint(agregatai[5].getOutPoint(0));
         superLines[7].AddPoint(agregatai[8].getInPoint(0));
 
         //dX3 -> out
-        superLines[8].AddPoint(superLines[3].points.get(0).getPoint());
-        superLines[8].AddPoint(new EmptyPoint(new Point(700, -1)));
-        superLines[8].AddPoint(agregatai[8].getInPoint(0));
+//        superLines[8].AddPoint(superLines[3].points.get(0).getPoint());
+//        superLines[8].AddPoint(new EmptyPoint(new Point(700, -1)));
+//        superLines[8].AddPoint(agregatai[8].getInPoint(0));
 
         //dX2 -> +X2
         superLines[9].AddPoint(superLines[7].points.get(0).getPoint());
@@ -436,9 +439,11 @@ public class PartSelector extends javax.swing.JPanel {
         superLines[11].AddPoint(agregatai[1].getInPoint(3));
 
         //dX1 -> +X1[4]
-        tmp = superLines[6].points.get(1).getPoint();
+        tmp = agregatai[4].getOutPoint(0);
+        //tmp = superLines[6].points.get(1).getPoint();
         tmp.PreferSpanY = false;
         superLines[12].AddPoint(tmp);
+        superLines[12].AddPoint(new EmptyPoint(new Point(700, 140), false));
         tmp = new EmptyPoint(new Point(agregatai[1].getInPoint(4).getPosition().x, tmp.point.y));
         superLines[12].AddPoint(tmp);
         superLines[13].AddPoint(tmp.getPoint());
@@ -552,117 +557,126 @@ public class PartSelector extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="data table setters">
     
     void showGenerator() {
-       Double [][] values = new Double[data.size()][4];
+       Double [][] values = new Double[data.size()][5];
        
        for(int i = 0; i < data.size(); i++){
-           values[i][0] = data.get(i).getGenerator_x1();
-           values[i][1] = data.get(i).getGenerator_x2();
-           values[i][2] = data.get(i).getGenerator_x3();
-           values[i][3] = data.get(i).getGenerator_out();
+           values[i][0] = (double)i;
+           values[i][1] = data.get(i).getGenerator_x1();
+           values[i][2] = data.get(i).getGenerator_x2();
+           values[i][3] = data.get(i).getGenerator_x3();
+           values[i][4] = data.get(i).getGenerator_out();
        }
 
-       DefaultTableModel model = new DefaultTableModel(values, new String[]{"1", "2", "3", "out"});
+       DefaultTableModel model = new DefaultTableModel(values, new String[]{"t", "1", "2", "3", "out"});
        table.setModel(model);
     }
 
     void showSum1() {
-       Double [][] values = new Double[data.size()][6];
+       Double [][] values = new Double[data.size()][7];
 
        for(int i = 0; i < data.size(); i++){
-           values[i][0] = data.get(i).getSum1_x1();
-           values[i][1] = data.get(i).getSum1_x2();
-           values[i][2] = data.get(i).getSum1_x3();
-           values[i][3] = data.get(i).getSum1_x4();
-           values[i][4] = data.get(i).getSum1_x5();
-           values[i][5] = data.get(i).getSum1_out();
+           values[i][0] = (double)i;
+           values[i][1] = data.get(i).getSum1_x1();
+           values[i][2] = data.get(i).getSum1_x2();
+           values[i][3] = data.get(i).getSum1_x3();
+           values[i][4] = data.get(i).getSum1_x4();
+           values[i][5] = data.get(i).getSum1_x5();
+           values[i][6] = data.get(i).getSum1_out();
        }
 
-       DefaultTableModel model = new DefaultTableModel(values, new String[]{"1", "2", "3", "4", "5", "out"});
+       DefaultTableModel model = new DefaultTableModel(values, new String[]{"t", "1", "2", "3", "4", "5", "out"});
        table.setModel(model);
     }
 
     void showSum2() {
-       Double [][] values = new Double[data.size()][3];
+       Double [][] values = new Double[data.size()][4];
 
        for(int i = 0; i < data.size(); i++){
-           values[i][0] = data.get(i).getSum2_x1();
-           values[i][1] = data.get(i).getSum2_x2();
-           values[i][2] = data.get(i).getSum2_out();
+           values[i][0] = (double)i;
+           values[i][1] = data.get(i).getSum2_x1();
+           values[i][2] = data.get(i).getSum2_x2();
+           values[i][3] = data.get(i).getSum2_out();
        }
 
-       DefaultTableModel model = new DefaultTableModel(values, new String[]{"1", "2", "out"});
+       DefaultTableModel model = new DefaultTableModel(values, new String[]{"t", "1", "2", "out"});
        table.setModel(model);
     }
 
     void showSum3() {
-       Double [][] values = new Double[data.size()][3];
+       Double [][] values = new Double[data.size()][4];
 
        for(int i = 0; i < data.size(); i++){
-           values[i][0] = data.get(i).getSum3_x1();
-           values[i][1] = data.get(i).getSum3_x2();
-           values[i][2] = data.get(i).getSum3_out();
+           values[i][0] = (double)i;
+           values[i][1] = data.get(i).getSum3_x1();
+           values[i][2] = data.get(i).getSum3_x2();
+           values[i][3] = data.get(i).getSum3_out();
        }
 
-       DefaultTableModel model = new DefaultTableModel(values, new String[]{"1", "2", "out"});
+       DefaultTableModel model = new DefaultTableModel(values, new String[]{"t", "1", "2", "out"});
        table.setModel(model);
     }
 
     void showInteg1() {
-       Double [][] values = new Double[data.size()][3];
+       Double [][] values = new Double[data.size()][4];
 
        for(int i = 0; i < data.size(); i++){
-           values[i][0] = data.get(i).getInteg1_x1();
-           values[i][1] = data.get(i).getInteg1_x2();
-           values[i][2] = data.get(i).getInteg1_out();
+           values[i][0] = (double)i;
+           values[i][1] = data.get(i).getInteg1_x1();
+           values[i][2] = data.get(i).getInteg1_x2();
+           values[i][3] = data.get(i).getInteg1_out();
        }
 
-       DefaultTableModel model = new DefaultTableModel(values, new String[]{"1", "2", "out"});
+       DefaultTableModel model = new DefaultTableModel(values, new String[]{"t", "1", "2", "out"});
        table.setModel(model);
     }
 
     void showInteg2() {
-       Double [][] values = new Double[data.size()][2];
+       Double [][] values = new Double[data.size()][3];
 
        for(int i = 0; i < data.size(); i++){
-           values[i][0] = data.get(i).getInteg2_x1();
-           values[i][1] = data.get(i).getInteg2_out();
+           values[i][0] = (double)i;
+           values[i][1] = data.get(i).getInteg2_x1();
+           values[i][2] = data.get(i).getInteg2_out();
        }
 
-       DefaultTableModel model = new DefaultTableModel(values, new String[]{"1", "out"});
+       DefaultTableModel model = new DefaultTableModel(values, new String[]{"t", "1", "out"});
        table.setModel(model);
     }
 
     void showInteg3() {
-       Double [][] values = new Double[data.size()][2];
+       Double [][] values = new Double[data.size()][3];
 
        for(int i = 0; i < data.size(); i++){
-           values[i][0] = data.get(i).getInteg3_x1();
-           values[i][1] = data.get(i).getInteg3_out();
+           values[i][0] = (double)i;
+           values[i][1] = data.get(i).getInteg3_x1();
+           values[i][2] = data.get(i).getInteg3_out();
        }
 
-       DefaultTableModel model = new DefaultTableModel(values, new String[]{"1", "out"});
+       DefaultTableModel model = new DefaultTableModel(values, new String[]{"t", "1", "out"});
        table.setModel(model);
     }
 
     void showPump() {
-       Boolean [][] values = new Boolean[data.size()][1];
+       String [][] values = new String[data.size()][2];
 
        for(int i = 0; i < data.size(); i++){
-           values[i][0] = data.get(i).isPompa_out();
+           values[i][0] = new Integer(i).toString();
+           values[i][1] = new Boolean(data.get(i).isPompa_out()).toString();
        }
 
-       DefaultTableModel model = new DefaultTableModel(values, new String[]{"out"});
+       DefaultTableModel model = new DefaultTableModel(values, new String[]{"t", "out"});
        table.setModel(model);
     }
 
     void showOut() {
-       Double [][] values = new Double[data.size()][1];
+       Double [][] values = new Double[data.size()][2];
 
        for(int i = 0; i < data.size(); i++){
-           values[i][0] = data.get(i).getInteg2_out();
+           values[i][0] = (double)i;
+           values[i][1] = data.get(i).getInteg2_out();
        }
 
-       DefaultTableModel model = new DefaultTableModel(values, new String[]{"out"});
+       DefaultTableModel model = new DefaultTableModel(values, new String[]{"t", "out"});
        table.setModel(model);
     }
 
@@ -675,6 +689,9 @@ public class PartSelector extends javax.swing.JPanel {
             public int getRowCount() { return 0;}
             public Object getValueAt(int row, int col) { return 0; }
         });
+
+        if(data == null)
+            data = data_pka;
 
         if(data == null)
             return;
