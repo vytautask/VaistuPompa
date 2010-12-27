@@ -13,4 +13,5 @@ public interface ISumator{
     public double getSumK3();
     public void setKValues(double _ke1, double _k12, double _k21, double _k13,
             double _k31);
+    public double getSum(double x, double pokytis);
 }

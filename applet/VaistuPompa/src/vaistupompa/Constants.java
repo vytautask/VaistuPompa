@@ -15,7 +15,7 @@ public class Constants {
     private static double _cl = 1.28d;//0.0;
     private static double _vss = 0.0d;
     private static double _painConst = 0.01d;//0.0;
-    private static int _maxSeconds = 1; //buvo 1800
+    private static int _maxSeconds = 10; //buvo 1800
     private static double _dosage = 0.12d;//0.0;
 
     // </editor-fold>
