@@ -20,7 +20,7 @@ public class SimulationChartClass {
                 double[] datas1 = new double[n];
 
                 for (int i = 0; i < n; i++) {
-                    datas1[i] = pka.get(i).getSum2_out();
+                    datas1[i] = pka.get(i).getSum1_out();
                 }
                 // PlotPanel construction
                 plotpanel.addLegend("SOUTH");
@@ -34,7 +34,7 @@ public class SimulationChartClass {
                 double[] datas1 = new double[n];
 
                 for (int i = 0; i < n; i++) {
-                    datas1[i] = ipka.get(i).getSum2_out();
+                    datas1[i] = ipka.get(i).getSum1_out();
                 }
                 // PlotPanel construction
                 plotpanel.addLegend("SOUTH");
