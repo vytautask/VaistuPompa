@@ -68,6 +68,11 @@ public class MainForm extends javax.swing.JApplet {
         jSplitPane1.setLeftComponent(ps);
         jSplitPane1.setDividerLocation(345);
 
+        jTabbedPane1.insertTab("Grafikas", null, simuChart.getMainPanel(),
+                "Parodo visokius grafikus", 0);
+
+        jTabbedPane1.setSelectedIndex(0);
+        
         UpdateConsts();
     }
 
@@ -621,10 +626,11 @@ public class MainForm extends javax.swing.JApplet {
         ArrayList<DataContainer> pka = s.getValuesList_PKA();
         ArrayList<DataContainer> ipka = s.getValuesList_iPKA();
 
-        jTabbedPane1.insertTab("Grafikas", null,
-            simuChart.CreateAdvacedChart(pka, ipka), "Parodo visokius grafikus", 0);
+        simuChart.CreateAdvacedChart(pka, ipka);
+//        jTabbedPane1.insertTab("Grafikas", null,
+//            simuChart.CreateAdvacedChart(pka, ipka), "Parodo visokius grafikus", 0);
 
-        jTabbedPane1.setSelectedIndex(0);
+//        jTabbedPane1.setSelectedIndex(0);
 
         ps.setDataPKA(pka);
         ps.setDataIPKA(ipka);
