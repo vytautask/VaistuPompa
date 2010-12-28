@@ -118,9 +118,9 @@ public class Simulator {
 
             sumator1.setXValues(pokyt1, pokyt2, pokyt3);
 
-            //_x1 += sumator1.getSumK1(); //vaisto kiekis kraujo plazmoje einamuoju laiko momentu (i) 1 kompartamente
-            //_x2 += sumator1.getSumK2(); //vaisto kiekis kraujo plazmoje einamuoju laiko momentu (i) 2 kompartamente
-            //_x3 += sumator1.getSumK3(); //vaisto kiekis kraujo plazmoje einamuoju laiko momentu (i) 3 kompartamente
+            //_x1 = sumator1.getSumK1(); //vaisto kiekis kraujo plazmoje einamuoju laiko momentu (i) 1 kompartamente
+            //_x2 = sumator1.getSumK2(); //vaisto kiekis kraujo plazmoje einamuoju laiko momentu (i) 2 kompartamente
+            //_x3 = sumator1.getSumK3(); //vaisto kiekis kraujo plazmoje einamuoju laiko momentu (i) 3 kompartamente
 
             _x1 = _x1 + pokyt1;
             integrator1.setX1(_x1);
@@ -200,6 +200,7 @@ public class Simulator {
             cont.setInteg3_x1(_x1_1);
 
             double pokyt1 = integrator1.calculate1Compartment();
+            integrator1.setX1(_x1_1+pokyt1);
             double pokyt2 = integrator1.calculate2Compartment();
             double pokyt3 = integrator1.calculate3Compartment();
 
