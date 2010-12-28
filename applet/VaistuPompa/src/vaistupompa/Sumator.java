@@ -133,4 +133,17 @@ public class Sumator implements ISumator {
 
         calculateBValues();
     }
+
+    public double getSum(double x, double pokytis)
+    {
+        double suma = x + pokytis;
+        if(suma < 0)
+        {
+            return -suma;
+        }
+        else
+        {
+            return suma;
+        }
+    }
 }

@@ -92,6 +92,7 @@ public class Simulator {
             cont.setInteg3_x1(_x1);
 
             double pokyt1 = integrator1.calculate1Compartment();
+            integrator1.setX1(_x1);
             double pokyt2 = integrator1.calculate2Compartment();
             double pokyt3 = integrator1.calculate3Compartment();
 
@@ -122,12 +123,15 @@ public class Simulator {
             //_x2 = sumator1.getSumK2(); //vaisto kiekis kraujo plazmoje einamuoju laiko momentu (i) 2 kompartamente
             //_x3 = sumator1.getSumK3(); //vaisto kiekis kraujo plazmoje einamuoju laiko momentu (i) 3 kompartamente
 
-            _x1 = _x1 + pokyt1;
-            integrator1.setX1(_x1);
-            _x2 = _x2 + integrator1.calculate2Compartment();
-            integrator1.setX2(_x2);
-            integrator1.setX3(_x3);
-            _x3 = _x3 + integrator1.calculate3Compartment();
+            _x1 = sumator1.getSum(_x1, pokyt1);
+            _x2 = sumator1.getSum(_x2, pokyt2);
+            _x3 = sumator1.getSum(_x3, pokyt3);
+            //_x1 = _x1 + pokyt1;
+            //integrator1.setX1(_x1);
+            //_x2 = _x2 + integrator1.calculate2Compartment();
+            //integrator1.setX2(_x2);
+            //integrator1.setX3(_x3);
+            //_x3 = _x3 + integrator1.calculate3Compartment();
 
             cont.setInteg1_out(pokyt1);
             cont.setInteg2_out(pokyt2);
@@ -157,7 +161,7 @@ public class Simulator {
 
             if (timeToNextDose2 <= 0 || timeToNextDose2 == Integer.MAX_VALUE || timeToNextDose2 == (i-1))
             {
-                int generated = generator.generate(_x1, _x2, _x3);
+                int generated = generator.generate(_x1_1, _x2_1, _x3_1);
                 if (generated != Integer.MAX_VALUE)
                     timeToNextDose2 = generated + i;
                 else
@@ -200,7 +204,7 @@ public class Simulator {
             cont.setInteg3_x1(_x1_1);
 
             double pokyt1 = integrator1.calculate1Compartment();
-            integrator1.setX1(_x1_1+pokyt1);
+            integrator1.setX1(_x1_1 + pokyt1);
             double pokyt2 = integrator1.calculate2Compartment();
             double pokyt3 = integrator1.calculate3Compartment();
 
@@ -231,9 +235,13 @@ public class Simulator {
             //_x2_1 = sumator1.getSumK2(); //vaisto kiekis kraujo plazmoje einamuoju laiko momentu (i) 2 kompartamente
             //_x3_1 = sumator1.getSumK3(); //vaisto kiekis kraujo plazmoje einamuoju laiko momentu (i) 3 kompartamente
 
-            _x1_1 += pokyt1;
-            _x2_1 += pokyt2;
-            _x3_1 += pokyt3;
+            //_x1_1 += pokyt1;
+            //_x2_1 += pokyt2;
+            //_x3_1 += pokyt3;
+
+            _x1_1 = sumator1.getSum(_x1_1, pokyt1);
+            _x2_1 = sumator1.getSum(_x2_1, pokyt2);
+            _x3_1 = sumator1.getSum(_x3_1, pokyt3);
 
             cont.setSum1_out(_x1_1);
             cont.setSum2_out(_x2_1);
