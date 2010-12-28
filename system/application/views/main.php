@@ -6,7 +6,7 @@
      $(document).ready(function(){
 		$("#twitter").getTwitter({
 			userName: "vaistupompa",
-			numTweets: 5,
+			numTweets: 3,
 			loaderText: "Kraunami paskutiniai pakeitimai...",
 			slideIn: true,
 			slideDuration: 750,
@@ -36,6 +36,8 @@
 	Gintarė Veličkaitė<br/>
 	Audrius Česna</code>
 
+	<p>Visos sistemos išeities tekstą galima pasiekti per github.com: <a href="https://github.com/vytautask/VaistuPompa">https://github.com/vytautask/VaistuPompa</a>. <br/>Taip pat išeities tekstus galima parsisiųsti iš čia: <a href="source.zip"></a></p>
+	
 	<div id="twitter">
 		<p><a href="http://twitter.com/jquery"></a></p>
 	</div>

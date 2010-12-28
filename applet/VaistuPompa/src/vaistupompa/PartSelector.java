@@ -557,14 +557,14 @@ public class PartSelector extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="data table setters">
     
     void showGenerator() {
-       Double [][] values = new Double[data.size()][5];
+       String [][] values = new String[data.size()][5];
        
        for(int i = 0; i < data.size(); i++){
-           values[i][0] = (double)i;
-           values[i][1] = data.get(i).getGenerator_x1();
-           values[i][2] = data.get(i).getGenerator_x2();
-           values[i][3] = data.get(i).getGenerator_x3();
-           values[i][4] = data.get(i).getGenerator_out();
+           values[i][0] = String.format("%d", i);
+           values[i][1] = String.format("%.5f", data.get(i).getGenerator_x1());
+           values[i][2] = String.format("%.5f", data.get(i).getGenerator_x2());
+           values[i][3] = String.format("%.5f", data.get(i).getGenerator_x3());
+           values[i][4] = String.format("%.5f", data.get(i).getGenerator_out());
        }
 
        DefaultTableModel model = new DefaultTableModel(values, new String[]{"t", "1", "2", "3", "out"});
@@ -572,16 +572,16 @@ public class PartSelector extends javax.swing.JPanel {
     }
 
     void showSum1() {
-       Double [][] values = new Double[data.size()][7];
+       String [][] values = new String[data.size()][7];
 
        for(int i = 0; i < data.size(); i++){
-           values[i][0] = (double)i;
-           values[i][1] = data.get(i).getSum1_x1();
-           values[i][2] = data.get(i).getSum1_x2();
-           values[i][3] = data.get(i).getSum1_x3();
-           values[i][4] = data.get(i).getSum1_x4();
-           values[i][5] = data.get(i).getSum1_x5();
-           values[i][6] = data.get(i).getSum1_out();
+           values[i][0] = String.format("%d", i);
+           values[i][1] = String.format("%.5f", data.get(i).getSum1_x1());
+           values[i][2] = String.format("%.5f", data.get(i).getSum1_x2());
+           values[i][3] = String.format("%.5f", data.get(i).getSum1_x3());
+           values[i][4] = String.format("%.5f", data.get(i).getSum1_x4());
+           values[i][5] = String.format("%.5f", data.get(i).getSum1_x5());
+           values[i][6] = String.format("%.5f", data.get(i).getSum1_out());
        }
 
        DefaultTableModel model = new DefaultTableModel(values, new String[]{"t", "1", "2", "3", "4", "5", "out"});
@@ -589,13 +589,13 @@ public class PartSelector extends javax.swing.JPanel {
     }
 
     void showSum2() {
-       Double [][] values = new Double[data.size()][4];
+       String [][] values = new String[data.size()][4];
 
        for(int i = 0; i < data.size(); i++){
-           values[i][0] = (double)i;
-           values[i][1] = data.get(i).getSum2_x1();
-           values[i][2] = data.get(i).getSum2_x2();
-           values[i][3] = data.get(i).getSum2_out();
+           values[i][0] = String.format("%d", i);
+           values[i][1] = String.format("%.5f", data.get(i).getSum2_x1());
+           values[i][2] = String.format("%.5f", data.get(i).getSum2_x2());
+           values[i][3] = String.format("%.5f", data.get(i).getSum2_out());
        }
 
        DefaultTableModel model = new DefaultTableModel(values, new String[]{"t", "1", "2", "out"});
@@ -603,13 +603,13 @@ public class PartSelector extends javax.swing.JPanel {
     }
 
     void showSum3() {
-       Double [][] values = new Double[data.size()][4];
+       String [][] values = new String[data.size()][4];
 
        for(int i = 0; i < data.size(); i++){
-           values[i][0] = (double)i;
-           values[i][1] = data.get(i).getSum3_x1();
-           values[i][2] = data.get(i).getSum3_x2();
-           values[i][3] = data.get(i).getSum3_out();
+           values[i][0] = String.format("%d", i);
+           values[i][1] = String.format("%.5f", data.get(i).getSum3_x1());
+           values[i][2] = String.format("%.5f", data.get(i).getSum3_x2());
+           values[i][3] = String.format("%.5f", data.get(i).getSum3_out());
        }
 
        DefaultTableModel model = new DefaultTableModel(values, new String[]{"t", "1", "2", "out"});
@@ -617,13 +617,13 @@ public class PartSelector extends javax.swing.JPanel {
     }
 
     void showInteg1() {
-       Double [][] values = new Double[data.size()][4];
+       String [][] values = new String[data.size()][4];
 
        for(int i = 0; i < data.size(); i++){
-           values[i][0] = (double)i;
-           values[i][1] = data.get(i).getInteg1_x1();
-           values[i][2] = data.get(i).getInteg1_x2();
-           values[i][3] = data.get(i).getInteg1_out();
+           values[i][0] = String.format("%d", i);
+           values[i][1] = String.format("%.5f", data.get(i).getInteg1_x1());
+           values[i][2] = String.format("%.5f", data.get(i).getInteg1_x2());
+           values[i][3] = String.format("%.5f", data.get(i).getInteg1_out());
        }
 
        DefaultTableModel model = new DefaultTableModel(values, new String[]{"t", "1", "2", "out"});
@@ -631,12 +631,12 @@ public class PartSelector extends javax.swing.JPanel {
     }
 
     void showInteg2() {
-       Double [][] values = new Double[data.size()][3];
+       String [][] values = new String[data.size()][3];
 
        for(int i = 0; i < data.size(); i++){
-           values[i][0] = (double)i;
-           values[i][1] = data.get(i).getInteg2_x1();
-           values[i][2] = data.get(i).getInteg2_out();
+           values[i][0] = String.format("%d", i);
+           values[i][1] = String.format("%.5f", data.get(i).getInteg2_x1());
+           values[i][2] = String.format("%.5f", data.get(i).getInteg2_out());
        }
 
        DefaultTableModel model = new DefaultTableModel(values, new String[]{"t", "1", "out"});
@@ -644,12 +644,12 @@ public class PartSelector extends javax.swing.JPanel {
     }
 
     void showInteg3() {
-       Double [][] values = new Double[data.size()][3];
+       String [][] values = new String[data.size()][3];
 
        for(int i = 0; i < data.size(); i++){
-           values[i][0] = (double)i;
-           values[i][1] = data.get(i).getInteg3_x1();
-           values[i][2] = data.get(i).getInteg3_out();
+           values[i][0] = String.format("%d", i);
+           values[i][1] = String.format("%.5f", data.get(i).getInteg3_x1());
+           values[i][2] = String.format("%.5f", data.get(i).getInteg3_out());
        }
 
        DefaultTableModel model = new DefaultTableModel(values, new String[]{"t", "1", "out"});
@@ -660,7 +660,7 @@ public class PartSelector extends javax.swing.JPanel {
        String [][] values = new String[data.size()][2];
 
        for(int i = 0; i < data.size(); i++){
-           values[i][0] = new Integer(i).toString();
+           values[i][0] = String.format("%d", i);
            values[i][1] = new Boolean(data.get(i).isPompa_out()).toString();
        }
 
@@ -669,11 +669,11 @@ public class PartSelector extends javax.swing.JPanel {
     }
 
     void showOut() {
-       Double [][] values = new Double[data.size()][2];
+       String [][] values = new String[data.size()][2];
 
        for(int i = 0; i < data.size(); i++){
-           values[i][0] = (double)i;
-           values[i][1] = data.get(i).getInteg2_out();
+           values[i][0] = String.format("%d", i);
+           values[i][1] = String.format("%.5f", data.get(i).getInteg2_out());
        }
 
        DefaultTableModel model = new DefaultTableModel(values, new String[]{"t", "out"});

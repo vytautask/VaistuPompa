@@ -31,6 +31,7 @@ public class SimulationChartClass {
         combo.addItem("Integratorius 1");
         combo.addItem("Integratorius 2");
         combo.addItem("Integratorius 3");
+        combo.addItem("3D visų sumatorių diagrama");
         combo.setSelectedIndex(0);
 
         combo.addItemListener(new java.awt.event.ItemListener() {
@@ -81,21 +82,32 @@ public class SimulationChartClass {
     public void CreateAdvacedChart(ArrayList<DataContainer> pka, ArrayList<DataContainer> ipka) {
         this.pka = pka;
         this.ipka = ipka;
+
+        if (this.combo.getSelectedIndex() == 6) {
+            threeD = true;
+        } else {
+            threeD = false;
+        }
+
         try {
             plotPanel.removeAllPlots();
 
             if (threeD) {
+                this.CreatePlotPanel();
                 Plot3DPanel plot = (Plot3DPanel)plotPanel;
 
                 if (pka != null) {
-                    plot.addLinePlot("PKA grafikas", get3DPlotData(pka, 0));
+                    //plot.addLinePlot("PKA grafikas", get3DPlotData(pka, 0));
+                    plot.addGridPlot("PKA grafikas", get3DPlotData(pka, 0));
                 }
 
                 if (ipka != null) {
-                    plot.addLinePlot("iPKA grafikas", get3DPlotData(ipka, 5));
+                    //plot.addLinePlot("iPKA grafikas", get3DPlotData(ipka, 5));
+                    plot.addGridPlot("iPKA grafikas", get3DPlotData(ipka, 0));
                 }
 
             } else {
+                this.CreatePlotPanel();
                 Plot2DPanel plot = (Plot2DPanel)plotPanel;
                 if (pka != null) {
                     plot.addLinePlot("PKA grafikas", getPlotData(pka));
@@ -118,13 +130,14 @@ public class SimulationChartClass {
         int n = data.size();
         int m = 50;
 
-        double[][] result = new double[m][];
-        double[] empty = new double[n];
+        double[][] result;// = new double[m][];
+        //double[] empty = new double[n];
 
-        for(int i = 0; i < m; i++)
-            result[i] = empty;
+        //for(int i = 0; i < m; i++)
+           // result[i] = empty;
 
-        result[shift]= getPlotData(data);
+        //result[shift]= getPlotData(data);
+        result = this.getSums3DPlotData(data);
 
         return result;
     }
@@ -137,7 +150,6 @@ public class SimulationChartClass {
                 return getSum2PlotData(data);
             case 2:
                 return getSum3PlotData(data);
-
             case 3:
                 return getInteg1PlotData(data);
             case 4:
@@ -147,6 +159,28 @@ public class SimulationChartClass {
         }
 
         return getSum1PlotData(data);
+    }
+
+    private double[][] getSums3DPlotData(ArrayList<DataContainer> data) {
+        double[][] result = null;
+
+        if (data != null) {
+            int n = data.size();
+            result = new double[n][3];
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < 3; j++) {
+                    if (j == 0) {
+                        result[i][j] = data.get(i).getSum1_out();
+                    } else if(j == 1) {
+                        result[i][j] = data.get(i).getSum2_out();
+                    } else {
+                        result[i][j] = data.get(i).getSum3_out();
+                    }
+                }
+            }
+        }
+
+        return result;
     }
 
     private double[] getSum1PlotData(ArrayList<DataContainer> data) {

@@ -18,8 +18,6 @@
 
 
     <jar href="lib/jmathio.jar"/>
-<jar href="lib/groovylab.jar"/>
-<jar href="lib/jmatharray.jar"/>
 </resources>
     <applet-desc height="400" main-class="vaistupompa.MainForm" name="VaistuPompa" width="300">
 
